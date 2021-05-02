@@ -7,6 +7,7 @@ module.exports = {
 	login,
 	checkToken,
 	update, 
+	index
 };
 
 /*--- Helper Functions ---*/
@@ -53,4 +54,11 @@ function checkToken(req, res) {
   async function update(req, res) {
 	const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
 	res.status(200).json(updatedUser);
+  }
+
+  async function index(req, res) {
+	const users = await User.find({});
+	// re-sort based upon the sortOrder of the categories
+	users.sort((a, b) => a.name.sortOrder - b.name.sortOrder);
+	res.json(users);
   }

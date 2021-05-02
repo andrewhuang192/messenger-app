@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-// import { getUsers } from '../../utilities/users-api';
+import { getAll } from '../../utilities/users-api';
 import * as usersAPI from '../../utilities/users-api';
 
 import AuthPage from '../AuthPage/AuthPage';
@@ -13,20 +13,23 @@ import './App.css';
 
 export default function App() {
 	const [user, setUser] = useState(getUser());
-	const [users, setUsers] = useState(getUser());
-	console.log(users)
-	console.log(user)
-
-	// useEffect(function () {
-	// 	async function getUsers() {
-	// 	  const users = await usersAPI.getUsers();
-	// 	//   console.log(users);
-	// 	  setUsers={users}
-	// 	}
-	// 	//   setMenuItems(items);
-	// 	//   setActiveUser(users[0].user.name);
-	// 	getUsers();
-	// }, []);
+	const [users, setUsers] = useState([]);
+	// users.then(function(result) {
+	// 	let users = result;
+	// 	console.log(result);
+	// 	return users;
+	// })
+	// const users = await getUsers();
+	// console.log(users)
+	
+	useEffect(() => {
+		async function getUsers() {
+			const users = await usersAPI.getAll();
+			//users.sort((a,b) => (a.name > b.name) ? 1 : -1)
+			setUsers(users);
+		}
+		getUsers();
+	}, []);
 
 	async function handleUpdatedUser(updatedUserData) {
 		console.log('working above')
@@ -58,6 +61,7 @@ export default function App() {
 			) : (
 				<AuthPage setUser={setUser} />
 			)}
+			
 		</main>
 	);
 }

@@ -12,7 +12,7 @@ export default function MessagePage({user, users}) {
 	// eslint-disable-next-line
 	const [messageItems, setMessageItems] = useState([]);
 	const [inputBox, setInputBox] = useState("");
-
+	// console.log(users)
 	const usersRef = useRef([]);
 
 	const handleChange = (e) => {
@@ -73,6 +73,8 @@ export default function MessagePage({user, users}) {
 						<button type='submit' >
 							SEND
 						</button>
+						<script src="/socket.io/socket.io.js"></script>
+    					<script src="/javascripts/app.js"></script>
 			</form>
 			
     	</main>

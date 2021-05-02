@@ -1,4 +1,5 @@
 import './UserList.css';
+import UserListItem from '../../Components/UserListItem/UserListItem';
 
 export default function UserList({ users, activeUser, setActiveUser }) {
   // const allUsers = users.map(user =>
@@ -12,10 +13,16 @@ export default function UserList({ users, activeUser, setActiveUser }) {
   //     {user}
   //   </li>
   // );
-  
+
   return (
     <ul className="UserList">
-      <li>{users.name}</li>
+      {users.map(user => (
+					<UserListItem
+						
+						user={user}
+						key={user._id}
+					/>
+				))}
     </ul>
   );
 }

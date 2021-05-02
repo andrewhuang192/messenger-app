@@ -14,9 +14,10 @@ export function checkToken() {
 	return sendRequest(`${BASE_URL}/check-token`);
 }
 
-export function getUsers() {
-	// return sendRequest(BASE_URL);
-	return fetch('/api/users').then(res => res.json());
+export function getAll() {
+	return sendRequest('/api/users');
+	// console.log(users)
+	// return fetch('/api/users').then(res => res.json());
 }
 
 export function update(loggedInUser) {
