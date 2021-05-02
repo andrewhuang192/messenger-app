@@ -1,6 +1,8 @@
 import React from 'react';
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import { Link } from 'react-router-dom';
+
+import SignUpForm from '../../Components/SignUpForm/SignUpForm';
+import LoginForm from '../../Components/LoginForm/LoginForm';
 
 export default function AuthPage({ setUser }) {
 	return (
@@ -8,6 +10,8 @@ export default function AuthPage({ setUser }) {
 			<h1>AuthPage</h1>
 			<SignUpForm setUser={setUser} />
 			<LoginForm setUser={setUser} />
+			<Link to='/reset'>Reset Password</Link>
+			{/* &nbsp; | &nbsp; */}
 		</main>
 	);
 }

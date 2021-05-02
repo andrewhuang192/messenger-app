@@ -6,6 +6,7 @@ module.exports = {
 	create,
 	login,
 	checkToken,
+	update, 
 };
 
 /*--- Helper Functions ---*/
@@ -47,4 +48,9 @@ function checkToken(req, res) {
 	// req.user will always be there for you when a token is sent
 	console.log('req.user', req.user);
 	res.json(req.exp);
+  }
+
+  async function update(req, res) {
+	const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+	res.status(200).json(updatedUser);
   }

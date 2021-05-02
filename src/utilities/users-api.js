@@ -14,6 +14,19 @@ export function checkToken() {
 	return sendRequest(`${BASE_URL}/check-token`);
 }
 
+export function getUsers() {
+	// return sendRequest(BASE_URL);
+	return fetch('/api/users').then(res => res.json());
+}
+
+export function update(loggedInUser) {
+    return fetch(`/api/users/${loggedInUser._id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(loggedInUser),
+    }).then(res => res.json());
+  }
+
 /*--- Helper Functions ---*/
 async function sendRequest(url, method = 'GET', payload = null) {
 	// Fetch takes an optional options object as it's second arg
