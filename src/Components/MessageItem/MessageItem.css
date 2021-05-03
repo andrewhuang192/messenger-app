@@ -3,37 +3,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3vmin;
+    margin-bottom: 125px;
     padding: 2vmin;
     color: var(--text-light);
     background-color: var(--white);
     border: .1vmin solid var(--tan-3);
     border-radius: 1vmin;
-    font-size: 4vmin;
+    font-size: 3vmin;
+
   }
   
-  .MessageItem .emoji {
-    height: 8vw;
-    width: 8vw;
-    font-size: 4vw;
+  .name {
+    height: 2vw;
+    width: 6vw;
+    font-size: 1vw;
     background-color: var(--tan-1);
     border: .1vmin solid var(--tan-3);
     border-radius: 1vmin;
+    text-align: left;
+    color: var(--text-light);
   }
   
-  .MessageItem .buy {
+  .textmessage {
     display: flex;
     flex-direction: column;
   }
   
-  .MessageItem .buy span {
-    font-size: 1.7vw;
+.timestamp {
+    font-size: 0.75vw;
     text-align: center;
     color: var(--text-light);
+  }
+
+tbody {
+    margin: 150px 0px;
   }
   
-  .MessageItem .name {
-    font-size: 2vw;
-    text-align: center;
-    color: var(--text-light);
-  }
+
+ 

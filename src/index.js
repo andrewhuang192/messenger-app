@@ -9,7 +9,7 @@ ReactDOM.render(
     <Router>
         <script src="/socket.io/socket.io.js"></script>
     		<script src="/src/pages/App/App.js"></script>
-      <App />
+        <App />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

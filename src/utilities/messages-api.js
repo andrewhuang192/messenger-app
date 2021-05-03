@@ -6,7 +6,6 @@ export function getAllMessages() {
 	return sendRequest(BASE_URL);
 
 	// return fetch(BASE_URL).then(res => res.json());
-    console.log('working json');
 }
 
 /*--- Helper Functions ---*/

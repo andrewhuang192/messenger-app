@@ -1,13 +1,18 @@
-import './MessageItem.css';
+import "./MessageItem.css";
 
 export default function MessageItem({ messageItem }) {
   return (
-    <div className="MessageItem">
-      <div className="name">{messageItem.sender}</div>
-      <div className="textmessage">{messageItem.message}</div>
-      <div className="timestamp">
-        <span>${messageItem.timestamp}</span>
-      </div>
-    </div>
+  <tbody className="messageItem">
+        <tr>
+          
+            <td className="name">{messageItem.sender}</td>
+            <td className="timestamp">{messageItem.createdAt}</td>
+            </tr>
+            <tr>
+            <td></td>
+            <td className="textmessage">{messageItem.message}</td>
+            </tr>
+        </tbody>
+
   );
 }

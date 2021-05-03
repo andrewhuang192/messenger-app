@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 // import { getUsers } from '../../utilities/users-service';
 import * as messagesAPI from '../../utilities/messages-api';
 import * as usersService from '../../utilities/users-service';
-import UserList from '../../Components/UserList/UserList';
+import ConversationList from '../../Components/ConversationList/ConversationList';
 import ConversationBox from '../../Components/ConversationBox/ConversationBox';
 
 import './MessagePage.css';
@@ -41,7 +41,7 @@ export default function MessagePage({user, users}) {
 		  }, []);
 		  setMessageItems(messages);
 		  setActiveConversation(messages[0].conversation._id);
-		  console.log(messages[0].conversation._id);
+		//   console.log(messages[0].conversation._id);
 		}
 		getMessages();
 	}, []);
@@ -53,8 +53,8 @@ export default function MessagePage({user, users}) {
 		  	<button onClick={handleCheckToken}>
 				Check When My Login Expires
 			</button>
-			<h4>Friends</h4>
-			<UserList
+			<h4>Conversations</h4>
+			<ConversationList
 				users={users}
 				activeConversation={activeConversation}
 				setActiveConversation={setActiveConversation}
@@ -62,7 +62,8 @@ export default function MessagePage({user, users}) {
 			</aside>
 			
 			<form autoComplete='off' onSubmit={handleSubmit}>
-						<h2>Conversation with {activeConversation}</h2>
+						<h2>Messages with {activeConversation}</h2>
+						<h4>Last Seen: </h4>
 						<ConversationBox
 							user={user}
 							messageItems={messageItems.filter((message) => message.conversation._id === activeConversation)}

@@ -1,7 +1,7 @@
-import './UserList.css';
-import UserListItem from '../../Components/UserListItem/UserListItem';
+import './ConversationList.css';
+import UserListItem from '../UserListItem/UserListItem';
 
-export default function UserList({ users, activeConversation, setActiveConversation }) {
+export default function ConversationList({ users, activeConversation, setActiveConversation }) {
 //   const allusers = users.map(user =>
 //     <li
 //       key={user}
@@ -15,7 +15,7 @@ export default function UserList({ users, activeConversation, setActiveConversat
 //   );
 
   return (
-    <ul className="UserList">
+    <ul className="ConversationList">
       {users.map(user => (
 					<UserListItem
 						

@@ -15,6 +15,10 @@ export default function App() {
 	const [user, setUser] = useState(getUser());
 	const [users, setUsers] = useState([]);
 
+	// get our connection to the socket.io server
+	// var socket = io();
+	// console.log(socket)
+	
 	useEffect(() => {
 		async function getUsers() {
 			const users = await usersAPI.getAllUsers();
