@@ -1,0 +1,26 @@
+.MessagePage {
+    height: 125%;
+    display: grid;
+    grid-template-columns: 2fr 4fr 0fr;
+    grid-template-rows: 1fr;
+    background-color: var(--white);
+    border-radius: 2vmin;
+    margin-top: 100px;
+  }
+  
+  .MessagePage aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3vmin 2vmin;
+  }
+
+  .MessagePage form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3vmin 2vmin;
+    width: 100%;
+  }

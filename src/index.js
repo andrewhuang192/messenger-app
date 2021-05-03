@@ -2,15 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
-import App from "./pages/App/App";
-
-
+import App from "./pages/App/App.js";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
         <script src="/socket.io/socket.io.js"></script>
-    		<script src="/javascripts/app.js"></script>
+    		<script src="/src/pages/App/App.js"></script>
       <App />
     </Router>
   </React.StrictMode>,

@@ -6,7 +6,7 @@ export default function MessageItem({ messageItem }) {
       <div className="name">{messageItem.sender}</div>
       <div className="textmessage">{messageItem.message}</div>
       <div className="timestamp">
-        <span>${messageItem.timesatamp}</span>
+        <span>${messageItem.timestamp}</span>
       </div>
     </div>
   );

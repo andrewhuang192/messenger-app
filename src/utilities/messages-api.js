@@ -1,34 +1,13 @@
 import { getToken } from './users-service';
 
-const BASE_URL = '/api/users';
+const BASE_URL = '/api/messages';
 
-export async function signUp(userData) {
-	return sendRequest(BASE_URL, 'POST', userData);
+export function getAllMessages() {
+	return sendRequest(BASE_URL);
+
+	// return fetch(BASE_URL).then(res => res.json());
+    console.log('working json');
 }
-
-export async function login(credentials) {
-	return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
-}
-
-export function checkToken() {
-	return sendRequest(`${BASE_URL}/check-token`);
-}
-
-export function getAllUsers() {
-	return sendRequest('/api/users');
-	// console.log(users)
-	// return fetch('/api/users').then(res => res.json());
-}
-
-export function update(loggedInUser) {
-    // return fetch(`http://localhost:3000/api/users/${loggedInUser._id}`, {
-    //   method: "PUT",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(loggedInUser),
-    // }).then(res => res.json());
-	return sendRequest(`${BASE_URL}/${loggedInUser._id}`, 'PUT', loggedInUser)
-	
-  }
 
 /*--- Helper Functions ---*/
 async function sendRequest(url, method = 'GET', payload = null) {

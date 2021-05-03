@@ -53,12 +53,13 @@ export default function EditUserPage({ user, handleUpdatedUser }){
         </div>
         <div className="form-group">
           <label>Created Date</label>
-          <input
+          <div
             className="form-control"
             name="date"
-            value={ formData.timestamps}
+            value={ formData.createdAt }
             onChange={ handleChange}
           />
+          {user.createdAt}
         </div>
         <button
           type="submit"

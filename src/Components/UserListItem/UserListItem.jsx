@@ -7,7 +7,7 @@ function UserListItem({ user }) {
 	return (
 		<div className='panel panel-default'>
 			<div className='panel-heading'>
-				<Link className='panel-title'>{user.name}</Link>
+				<Link to='/orders' className='panel-title'>{user.name}</Link>
 			</div>	
         </div>
 	);

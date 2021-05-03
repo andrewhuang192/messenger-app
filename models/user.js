@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+require('./conversation');
 
 const SALT_ROUNDS = 6; // 6 is a typical and reasonable value
 
@@ -20,7 +21,7 @@ const userSchema = new Schema(
 			minLength: 3,
 			required: true,
 		},
-		conversation: {type: Schema.Types.ObjectId, ref: 'Conversation'},
+		// conversation: [conversationSchema],
 	},
 	{
 		timestamps: true,
