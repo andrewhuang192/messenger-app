@@ -41,6 +41,8 @@ app.listen(port, function () {
 	console.log(`Express app running on port ${port}`);
 });
 
+/** -- Socket.io Server Config -- */
+
 // setup the port our backend app will run on
 const PORT = 3030;
 const NEW_MESSAGE_EVENT = "new-message-event";
@@ -74,6 +76,9 @@ io.on("connection", (socket) => {
 server.listen(PORT, () => {
   console.log(`listening on *:${PORT}`);
 });
+
+
+/** -- The code below is meant for password reset --*/
 
 // const express = require('express');
 const bodyParser = require('body-parser');

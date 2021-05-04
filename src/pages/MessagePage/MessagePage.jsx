@@ -6,7 +6,7 @@ import * as usersService from '../../utilities/users-service';
 import ConversationList from '../../Components/ConversationList/ConversationList';
 import ConversationBox from '../../Components/ConversationBox/ConversationBox';
 
-import useChat from "/Users/andrewhuang/Projects/project-3/src/useChatRoom.js";
+import useChatRoom from "/Users/andrewhuang/Projects/project-3/src/useChatRoom.js";
 import clsx from "clsx";
 
 import './MessagePage.css';
@@ -79,17 +79,32 @@ export default function MessagePage({user, users}) {
 		}
 	});
 	
-	const [activeConversation, setActiveConversation] = useState("");
 	// eslint-disable-next-line
+	const [activeConversation, setActiveConversation] = useState("");
 	const [messageItems, setMessageItems] = useState([]);
-	const [inputBox, setInputBox] = useState("");
-	const { messages, sendMessage } = useChat();
+	// const [inputBox, setInputBox] = useState("");
 	const [newMessage, setNewMessage] = useState("");
 	const classes = useStyles();
 	const messageRef = useRef()
-	
 	const usersRef = useRef([]);
+	
+	const { messages, sendMessage } = useChatRoom();
 
+	//Fetches all messages (messagesAPI.getAllMessages) and then use usersRef.current to match two users to find Active Conversation
+	useEffect(function () {
+		async function getMessages() {
+		  const messages = await messagesAPI.getAllMessages();
+		  usersRef.current = messages.reduce((convos, message) => {
+			const convo = message.conversation._id;
+			return convos.includes(convo) ? convos : [...convos, convo];
+		  }, []);
+		  setMessageItems(messages);
+		  setActiveConversation(messages[0].conversation._id);
+		//   console.log(messages[0].conversation._id);
+		}
+		getMessages();
+	}, []);
+	
 	/**-- Helper Functions for ConversationBox --**/	
 
 	const handleNewMessageChange = event => {
@@ -114,12 +129,12 @@ export default function MessagePage({user, users}) {
 	  
 		useEffect(() => messageRef.current.scrollIntoView({behavior: "smooth"}))
 
-	const handleChange = (e) => {
-		setInputBox({
-		  ...inputBox,
-		  [e.target.name]: e.target.value
-		})
-	  }
+	// const handleChange = (e) => {
+	// 	setInputBox({
+	// 	  ...inputBox,
+	// 	  [e.target.name]: e.target.value
+	// 	})
+	//   }
 
 	  const handleSubmit = (e) => {
 		e.preventDefault()
@@ -130,19 +145,6 @@ export default function MessagePage({user, users}) {
 		usersService.checkToken();
 	}
 
-	useEffect(function () {
-		async function getMessages() {
-		  const messages = await messagesAPI.getAllMessages();
-		  usersRef.current = messages.reduce((convos, message) => {
-			const convo = message.conversation._id;
-			return convos.includes(convo) ? convos : [...convos, convo];
-		  }, []);
-		  setMessageItems(messages);
-		  setActiveConversation(messages[0].conversation._id);
-		//   console.log(messages[0].conversation._id);
-		}
-		getMessages();
-	}, []);
 
 	return (
 		<main className="MessagePage">

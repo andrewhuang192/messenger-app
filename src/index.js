@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./pages/App/App.js";
-import MessagePage from "./pages/MessagePage/MessagePage";
+// import MessagePage from "./pages/MessagePage/MessagePage";
 
 ReactDOM.render(
   <React.StrictMode>
