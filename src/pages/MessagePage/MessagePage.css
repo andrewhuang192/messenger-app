@@ -11,7 +11,7 @@
   .MessagePage aside {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin: 3vmin 2vmin;
   }
@@ -23,4 +23,11 @@
     align-items: center;
     margin: 3vmin 2vmin;
     width: 100%;
+  }
+
+  .MessagePage form h2 {
+      margin: 0px 0px;
+  }
+  .MessagePage form h4 {
+      margin: 0px 0px;
   }
