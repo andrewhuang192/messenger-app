@@ -18,6 +18,8 @@ export default function NavBar({ user, setUser }) {
 			&nbsp; | &nbsp;
 			<span>{user.name}</span>
 			&nbsp; | &nbsp;
+			<Link to='/forgotpassword'>Reset Password</Link>
+			&nbsp; | &nbsp;
 			<Link to='' onClick={handleLogOut}>
 				Log Out
 			</Link>

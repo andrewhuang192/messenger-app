@@ -51,6 +51,7 @@ export default function App() {
 						<Route path='/orders'>
 							<MessagePage user={user} users={users} />
 						</Route>
+						
 						<Redirect to='/orders' />
 					</Switch>
 				</>

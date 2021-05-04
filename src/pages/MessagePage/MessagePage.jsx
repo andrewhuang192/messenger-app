@@ -162,14 +162,14 @@ export default function MessagePage({user, users}) {
 			<form autoComplete='off' onSubmit={handleSubmit}>
 						<h2>Messages with {activeConversation}</h2>
 						<h4>Last Seen: </h4>
-						<ConversationBox
-							user={user}
-							messageItems={messageItems.filter((message) => message.conversation._id === activeConversation)}
-						/>
 						<div className={classes.container}>
 							<Paper elevation={5} className={classes.paper}>
 								<div className={classes.messageContainer}>
 								<ol className={classes.ol}>
+									<ConversationBox
+										user={user}
+										messageItems={messageItems.filter((message) => message.conversation._id === activeConversation)}
+									/>
 									{messages.map((message, i) => (
 									<li
 										key={i}
