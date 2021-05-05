@@ -6,7 +6,7 @@ import * as usersService from '../../utilities/users-service';
 import ConversationList from '../../Components/ConversationList/ConversationList';
 import ConversationBox from '/Users/andrewhuang/Projects/project-3/src/Components/ConversationBox/ConversationBox.jsx';
 
-import useChatRoom from "/Users/andrewhuang/Projects/project-3/src/useChatRoom.js";
+import useChatRoom from "../../useChatRoom.js";
 import clsx from "clsx";
 
 import './MessagePage.css';
