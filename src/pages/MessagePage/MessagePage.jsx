@@ -4,7 +4,7 @@ import {Paper, TextField, Button, makeStyles} from "@material-ui/core";
 import * as messagesAPI from '../../utilities/messages-api';
 import * as usersService from '../../utilities/users-service';
 import ConversationList from '../../Components/ConversationList/ConversationList';
-import ConversationBox from '/Users/andrewhuang/Projects/project-3/src/Components/ConversationBox/ConversationBox.jsx';
+import ConversationBox from '../../Components/ConversationBox/ConversationBox';
 
 import useChatRoom from "../../useChatRoom.js";
 import clsx from "clsx";
