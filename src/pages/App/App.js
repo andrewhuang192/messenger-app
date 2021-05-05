@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 // import { getAllUsers } from '../../utilities/users-api';
 import * as usersAPI from '../../utilities/users-api';
+import * as messagesAPI from '../../utilities/messages-api';
 
 import AuthPage from '../AuthPage/AuthPage';
 import EditUserPage from '../EditUserPage/EditUserPage';
@@ -14,6 +15,7 @@ import './App.css';
 export default function App() {
 	const [user, setUser] = useState(getUser());
 	const [users, setUsers] = useState([]);
+	const [messages, setMessages] = useState([]);
 
 	// get our connection to the socket.io server
 	// var socket = io();
@@ -38,6 +40,12 @@ export default function App() {
 			setUsers(updatedUsersArray);
 	}
 	// console.log('updated Users:', users);
+
+	async function handleAddMessage(newMessageData) {
+		console.log(newMessageData);
+		const newMessage = await messagesAPI.create(newMessageData);
+		setMessages([...messages, newMessage]);
+	}
 		
 		return (
 			<main className='App'>
@@ -49,7 +57,7 @@ export default function App() {
 							<EditUserPage user={user} handleUpdatedUser={handleUpdatedUser} />
 						</Route>
 						<Route path='/orders'>
-							<MessagePage user={user} users={users} />
+							<MessagePage user={user} users={users} handleAddMessage={handleAddMessage} />
 						</Route>
 						
 						<Redirect to='/orders' />

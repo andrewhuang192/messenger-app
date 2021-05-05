@@ -8,6 +8,20 @@ export function getAllMessages() {
 	// return fetch(BASE_URL).then(res => res.json());
 }
 
+export function create(newMessage) {
+	console.log(newMessage)
+	return sendRequest(BASE_URL, 'POST', newMessage);
+	// return fetch('/api/messages', {
+		
+	// 	method: "POST",
+	// 	headers: { "content-type": "application/json" },
+	// 	body: JSON.stringify(newMessage),
+		
+	// }).then(res => res.json());
+	  }
+
+
+
 /*--- Helper Functions ---*/
 async function sendRequest(url, method = 'GET', payload = null) {
 	// Fetch takes an optional options object as it's second arg

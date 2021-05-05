@@ -4,14 +4,14 @@ import {Paper, TextField, Button, makeStyles} from "@material-ui/core";
 import * as messagesAPI from '../../utilities/messages-api';
 import * as usersService from '../../utilities/users-service';
 import ConversationList from '../../Components/ConversationList/ConversationList';
-import ConversationBox from '../../Components/ConversationBox/ConversationBox';
+import ConversationBox from '/Users/andrewhuang/Projects/project-3/src/Components/ConversationBox/ConversationBox.jsx';
 
 import useChatRoom from "/Users/andrewhuang/Projects/project-3/src/useChatRoom.js";
 import clsx from "clsx";
 
 import './MessagePage.css';
 
-export default function MessagePage({user, users}) {
+export default function MessagePage({user, users, handleAddMessage}) {
 	
 	const useStyles = makeStyles({
 		container: {
@@ -95,15 +95,15 @@ export default function MessagePage({user, users}) {
 		async function getMessages() {
 		  const messages = await messagesAPI.getAllMessages();
 		  usersRef.current = messages.reduce((convos, message) => {
-			const convo = message.conversation._id;
+			const convo = message.conversation;
 			return convos.includes(convo) ? convos : [...convos, convo];
 		  }, []);
 		  setMessageItems(messages);
-		  setActiveConversation(messages[0].conversation._id);
+		  setActiveConversation(messages[0].conversation);
 		//   console.log(messages[0].conversation._id);
 		}
 		getMessages();
-	}, []);
+	}, [users]);
 	
 	/**-- Helper Functions for ConversationBox --**/	
 
@@ -111,12 +111,15 @@ export default function MessagePage({user, users}) {
 		  setNewMessage(event.target.value);
 		};
 	  
-		const handleSendMessage = () => {
-		  if (newMessage !== "") {
-			sendMessage(newMessage);
-			setNewMessage("");
-		  }
-		};
+		// const handleSendMessage = () => {
+		//   if (newMessage !== "") {
+		// 	//   console.log('Message page hitting')
+		// 	sendMessage(newMessage);
+		// 	// console.log(messages)
+		// 	handleAddMessage(messages);
+		// 	setNewMessage("");
+		//   }
+		// };
 	  
 		const handleKeyUp = event => {
 		  if (event.key === "Enter"){
@@ -138,8 +141,16 @@ export default function MessagePage({user, users}) {
 
 	  const handleSubmit = (e) => {
 		e.preventDefault()
-		// handleNewMessage(inputBox);
-	  }
+		if (newMessage !== "") {
+		  console.log(newMessage)
+		  sendMessage(newMessage);
+		  console.log(messages)
+		  console.log(messages[0])
+		  handleAddMessage(messages[0]);
+
+		  setNewMessage("");
+		}
+	  };
 
 	async function handleCheckToken() {
 		usersService.checkToken();
@@ -170,14 +181,14 @@ export default function MessagePage({user, users}) {
 								<ol className={classes.ol}>
 									<ConversationBox
 										user={user}
-										messageItems={messageItems.filter((message) => message.conversation._id === activeConversation)}
+										messageItems={messageItems.filter((message) => message.conversation === activeConversation)}
 									/>
 									{messages.map((message, i) => (
 									<li
 										key={i}
 										className={clsx(classes.message, message.isOwner ? classes.owner : classes.guest)}
 									>
-										<span>{message.body}</span>
+										<span>{message.message}</span>
 									</li>
 									))}
 								</ol>
@@ -196,9 +207,10 @@ export default function MessagePage({user, users}) {
 								/>
 								<Button
 									disabled={!newMessage}
+									type="submit"
 									variant="contained"
 									color="primary"
-									onClick={handleSendMessage}
+									// onClick={handleSubmit}
 									className={classes.sendButton}
 								>
 									Send

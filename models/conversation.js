@@ -4,7 +4,7 @@ require('./user');
 
 const conversationSchema = new Schema(
 	{
-		user1: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+		user1: { type: Schema.Types.ObjectId, ref: 'User' },
 		user2: { type: Schema.Types.ObjectId, ref: 'User'},
 		// messages: [messageSchema]
 	},

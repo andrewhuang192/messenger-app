@@ -14,7 +14,7 @@ const useChatRoom = () => {
     socketRef.current.on(NEW_MESSAGE_EVENT, (message) => {
       const incomingMessage = {
         ...message,
-        isOwner: message.senderId === socketRef.current.id,
+        isOwner: message.sender === socketRef.current.id,
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });
@@ -26,10 +26,12 @@ const useChatRoom = () => {
 
   const sendMessage = (messageBody) => {
     socketRef.current.emit(NEW_MESSAGE_EVENT, {
-      body: messageBody,
-      senderId: socketRef.current.id,
+      conversation: socketRef.current.id,
+      message: messageBody,
+      sender: socketRef.current.id,
     });
   };
+  // console.log(messages)
 
   return { messages, sendMessage };
 };

@@ -4,12 +4,15 @@ require('./user');
 
 const messageSchema = new Schema(
     {
-        conversation: { type: Schema.Types.ObjectId, ref: 'Conversation', required: true },
+        conversation: { type: String},
         message: {
             type: String, 
         },
         sender: {
             type: String,
+        },
+        isOwner: {
+            type: Boolean,
         },
     }, {
     timestamps: true

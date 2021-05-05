@@ -9,7 +9,7 @@ export default function MessageItem({ messageItem }) {
             <td className="timestamp">{messageItem.createdAt}</td>
             </tr>
             <tr>
-            <td></td>
+            <td className="textmessage">{messageItem.conversation}</td>
             <td className="textmessage">{messageItem.message}</td>
             </tr>
         </tbody>
