@@ -23,9 +23,9 @@ const Message = require('./models/message');
 
   await Message.deleteMany({});
   const messages = await Message.create([
-    {conversation: conversations[0], message: 'hi, this is a test for convo 1', sender: 'john doe'},
-    {conversation: conversations[1], message: 'hi, this is a test for convo 2', sender: 'andrew'},
-    {conversation: conversations[2], message: 'hi, this is a test for convo 3', sender: 'testuser'},
+    {conversation: conversations[0], message: 'hi, this is a test for convo 1', sender: 'john doe', isOwner: true },
+    {conversation: conversations[1], message: 'hi, this is a test for convo 2', sender: 'andrew', isOwner: true },
+    {conversation: conversations[2], message: 'hi, this is a test for convo 3', sender: 'testuser', isOwner: true },
   ]);
 
   console.log(users)

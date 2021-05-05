@@ -31,3 +31,44 @@
   .MessagePage form h4 {
       margin: 0px 0px;
   }
+
+  .MessageItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 125px;
+    padding: 2vmin;
+    color: var(--text-light);
+    background-color: var(--white);
+    border: .1vmin solid var(--tan-3);
+    border-radius: 1vmin;
+    font-size: 3vmin;
+
+  }
+  
+  .name {
+    height: 2vw;
+    width: 6vw;
+    font-size: 1vw;
+    background-color: var(--tan-1);
+    border: .1vmin solid var(--tan-3);
+    border-radius: 1vmin;
+    text-align: left;
+    color: var(--text-light);
+  }
+  
+  .textmessage {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.timestamp {
+    font-size: 0.75vw;
+    text-align: center;
+    color: var(--text-light);
+  }
+
+tbody {
+    margin: 150px 0px;
+  }

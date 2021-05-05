@@ -186,9 +186,12 @@ export default function MessagePage({user, users, handleAddMessage}) {
 									{messages.map((message, i) => (
 									<li
 										key={i}
-										className={clsx(classes.message, message.isOwner ? classes.owner : classes.guest)}
+										className="messageItem"
+										// className={clsx(classes.message, message.isOwner ? classes.owner : classes.guest)}
 									>
-										<span>{message.message}</span>
+										<span className="textmessage">{message.message}</span>
+										<span className="timestamp">{message.createdAt}</span>
+										<span classname="name">{message.isOwner ? `${user.name}` : 'friend'}</span>
 									</li>
 									))}
 								</ol>
