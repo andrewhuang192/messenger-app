@@ -149,7 +149,7 @@ export default function MessagePage({user, users, handleAddMessage}) {
 		  sendMessage(newMessage);
 		  console.log(messages)
 		//   console.log(messages[0])
-		  handleAddMessage(messages[0]);
+		  handleAddMessage(messages[1]);
 
 		  setNewMessage("");
 		}
