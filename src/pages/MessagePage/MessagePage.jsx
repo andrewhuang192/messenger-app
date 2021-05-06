@@ -86,24 +86,27 @@ export default function MessagePage({user, users, handleAddMessage}) {
 	const [newMessage, setNewMessage] = useState("");
 	const classes = useStyles();
 	const messageRef = useRef()
-	const usersRef = useRef([]);
+	const conversationsRef = useRef([]);
 	
 	const { messages, sendMessage } = useChatRoom();
-
-	//Fetches all messages (messagesAPI.getAllMessages) and then use usersRef.current to match two users to find Active Conversation
+	
+	//Fetches all messages (messagesAPI.getAllMessages) and then use conversationsRef.current to match two users to find Active Conversation
 	useEffect(function () {
 		async function getMessages() {
-		  const messages = await messagesAPI.getAllMessages();
-		  usersRef.current = messages.reduce((convos, message) => {
-			const convo = message.conversation;
-			return convos.includes(convo) ? convos : [...convos, convo];
-		  }, []);
-		  setMessageItems(messages);
-		  setActiveConversation(messages[0].conversation);
-		//   console.log(messages[0].conversation._id);
+			const messages = await messagesAPI.getAllMessages();
+			// console.log(messages)
+			conversationsRef.current = messages.reduce((convos, message) => {
+				const convo = message.conversation;
+				return convos.includes(convo) ? convos : [...convos, convo];
+			}, []);
+			setMessageItems(messages);
+			// console.log(messageItems)
+		  	setActiveConversation(messages[0].conversation);
+			//   console.log(messages[0].conversation._id);
 		}
+		// console.log(conversationsRef.current)
 		getMessages();
-	}, [users]);
+	}, []);
 	
 	/**-- Helper Functions for ConversationBox --**/	
 
@@ -142,10 +145,10 @@ export default function MessagePage({user, users, handleAddMessage}) {
 	  const handleSubmit = (e) => {
 		e.preventDefault()
 		if (newMessage !== "") {
-		  console.log(newMessage)
+		//   console.log(newMessage)
 		  sendMessage(newMessage);
 		  console.log(messages)
-		  console.log(messages[0])
+		//   console.log(messages[0])
 		  handleAddMessage(messages[0]);
 
 		  setNewMessage("");
@@ -156,7 +159,6 @@ export default function MessagePage({user, users, handleAddMessage}) {
 		usersService.checkToken();
 	}
 
-
 	return (
 		<main className="MessagePage">
 
@@ -166,7 +168,7 @@ export default function MessagePage({user, users, handleAddMessage}) {
 			</button>
 			<h4>Conversations</h4>
 			<ConversationList
-				users={users}
+				conversations={conversationsRef.current}
 				activeConversation={activeConversation}
 				setActiveConversation={setActiveConversation}
 				/>
@@ -175,14 +177,14 @@ export default function MessagePage({user, users, handleAddMessage}) {
 			<form autoComplete='off' onSubmit={handleSubmit}>
 						<h2>Messages with {activeConversation}</h2>
 						<h4>Last Seen: </h4>
-						<div className={classes.container}>
-							<Paper elevation={5} className={classes.paper}>
-								<div className={classes.messageContainer}>
-								<ol className={classes.ol}>
 									<ConversationBox
 										user={user}
 										messageItems={messageItems.filter((message) => message.conversation === activeConversation)}
 									/>
+						<div className={classes.container}>
+							<Paper elevation={5} className={classes.paper}>
+								<div className={classes.messageContainer}>
+								<ol className={classes.ol}>
 									{messages.map((message, i) => (
 									<li
 										key={i}
@@ -191,7 +193,7 @@ export default function MessagePage({user, users, handleAddMessage}) {
 									>
 										<span className="textmessage">{message.message}</span>
 										<span className="timestamp">{message.createdAt}</span>
-										<span classname="name">{message.isOwner ? `${user.name}` : 'friend'}</span>
+										<span className="name">{message.isOwner ? `${user.name}` : 'friend'}</span>
 									</li>
 									))}
 								</ol>

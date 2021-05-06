@@ -26,7 +26,7 @@ const useChatRoom = () => {
 
   const sendMessage = (messageBody) => {
     socketRef.current.emit(NEW_MESSAGE_EVENT, {
-      conversation: socketRef.current.id,
+      conversation: "60938348f52d7841f8043ce1",
       message: messageBody,
       sender: socketRef.current.id,
     });

@@ -21,14 +21,14 @@ export default function App() {
 	// var socket = io();
 	// console.log(socket)
 	
-	useEffect(() => {
-		async function getUsers() {
-			const users = await usersAPI.getAllUsers();
-			//users.sort((a,b) => (a.name > b.name) ? 1 : -1)
-			setUsers(users);
-		}
-		getUsers();
-	}, []);
+	// useEffect(() => {
+	// 	async function getUsers() {
+	// 		const users = await usersAPI.getAllUsers();
+	// 		//users.sort((a,b) => (a.name > b.name) ? 1 : -1)
+	// 		setUsers(users);
+	// 	}
+	// 	getUsers();
+	// }, []);
 
 	async function handleUpdatedUser(updatedUserData) {
 		const updatedUser = await usersAPI.update(updatedUserData);

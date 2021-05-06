@@ -9,7 +9,7 @@ export function getAllMessages() {
 }
 
 export function create(newMessage) {
-	console.log(newMessage)
+	// console.log(newMessage)
 	return sendRequest(BASE_URL, 'POST', newMessage);
 	// return fetch('/api/messages', {
 		
@@ -19,7 +19,6 @@ export function create(newMessage) {
 		
 	// }).then(res => res.json());
 	  }
-
 
 
 /*--- Helper Functions ---*/

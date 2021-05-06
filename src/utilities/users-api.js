@@ -15,7 +15,7 @@ export function checkToken() {
 }
 
 export function getAllUsers() {
-	return sendRequest('/api/users');
+	return sendRequest(BASE_URL);
 	// console.log(users)
 	// return fetch('/api/users').then(res => res.json());
 }

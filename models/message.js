@@ -1,20 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-require('./user');
+require('./conversation');
 
-const messageSchema = new Schema(
-    {
-        conversation: { type: String},
-        message: {
-            type: String, 
-        },
-        sender: {
-            type: String,
-        },
-        isOwner: {
-            type: Boolean,
-        },
-    }, {
-    timestamps: true
-});
+const messageSchema = require('./messageSchema');
+
 module.exports = mongoose.model('Message', messageSchema);
+
