@@ -6,7 +6,8 @@ const cors = require("cors");
 const http = require("http");
 const socketIO = require("socket.io");
 // Always require and configure near the top
-require('dotenv').config();
+const dotenv = require("dotenv");
+require('dotenv').config({path: '.env'});
 
 // connect to the database
 require('./config/database');

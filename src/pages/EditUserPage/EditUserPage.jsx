@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
+import "./EditUserPage.css";
+
 
 export default function EditUserPage({ user, handleUpdatedUser }){
 
@@ -30,7 +32,7 @@ export default function EditUserPage({ user, handleUpdatedUser }){
   return (
     <>
       <h1>Edit User</h1>
-      <form ref={formRef} autoComplete="off" onSubmit={handleSubmit}>
+      <form ref={formRef} autoComplete="off" onSubmit={handleSubmit} className="EditUserPage">
         <div className="form-group">
           <label>User Name (required)</label>
           <input

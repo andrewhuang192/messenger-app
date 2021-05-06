@@ -21,7 +21,7 @@ export default function MessagePage({ user, users, handleAddMessage }) {
       backgroundColor: "#263238",
     },
     paper: {
-      width: "25em",
+      width: "50em",
       height: "80%",
       position: "relative",
     },
@@ -160,14 +160,14 @@ export default function MessagePage({ user, users, handleAddMessage }) {
     setMessageItems(messages.filter((p) => p._id !== id));
   }
 
-  async function handleCheckToken() {
-    usersService.checkToken();
-  }
+//   async function handleCheckToken() {
+//     usersService.checkToken();
+//   }
 
   return (
     <main className="MessagePage">
       <aside>
-        <button onClick={handleCheckToken}>Check When My Login Expires</button>
+        {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
         <h4>Conversations</h4>
         <ConversationList
           conversations={conversationsRef.current}
@@ -176,17 +176,17 @@ export default function MessagePage({ user, users, handleAddMessage }) {
 		  />
       </aside>
 
-      <ConversationBox
+      {/* <ConversationBox
         handleDeleteMessage={handleDeleteMessage}
         user={user}
         messageItems={messageItems.filter(
           (message) => message.conversation === activeConversation
         )}
-      />
+      /> */}
       <form autoComplete="off" onSubmit={handleSubmit}>
         <h2>Messages with {activeConversation}</h2>
         <h4>Last Seen: </h4>
-        <div className={classes.container}>
+        {/* <div className={classes.container}> */}
           <Paper elevation={5} className={classes.paper}>
             <div className={classes.messageContainer}>
               <ol className={classes.ol}>
@@ -273,7 +273,7 @@ export default function MessagePage({ user, users, handleAddMessage }) {
               </Button>
             </div>
           </Paper>
-        </div>
+        {/* </div> */}
       </form>
     </main>
   );

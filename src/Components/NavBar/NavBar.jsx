@@ -12,15 +12,15 @@ export default function NavBar({ user, setUser }) {
 
 	return (
 		<nav>
-			<Link to='/orders'>Messages</Link>
+			<Link to='/orders' className="messageslink">Messages</Link>
 			&nbsp; | &nbsp;
-			<Link to='/orders/new'>Profile</Link>
+			<Link to='/orders/new' className="messageslink">Profile</Link>
 			&nbsp; | &nbsp;
-			<span>{user.name}</span>
+			<span className="messageslink">{user.name}</span>
 			&nbsp; | &nbsp;
-			<Link to='/forgotpassword'>Reset Password</Link>
+			<Link to='/forgotpassword' className="messageslink">Reset Password</Link>
 			&nbsp; | &nbsp;
-			<Link to='' onClick={handleLogOut}>
+			<Link to='' onClick={handleLogOut} className="messageslink" >
 				Log Out
 			</Link>
 		</nav>

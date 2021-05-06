@@ -1,0 +1,15 @@
+.EditUserPage {
+    height: 295%;
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: 1fr;
+    background-color: var(--white);
+    border-radius: 2vmin;
+    margin-top: 50px;
+  }
+
+ .form-group {
+    justify-content: center;
+    align-items: center;
+  }
