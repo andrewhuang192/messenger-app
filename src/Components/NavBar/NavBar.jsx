@@ -14,7 +14,7 @@ export default function NavBar({ user, setUser }) {
 		<nav>
 			<Link to='/orders' className="messageslink">Messages</Link>
 			&nbsp; | &nbsp;
-			<Link to='/orders/new' className="messageslink">Profile</Link>
+			<Link to={{pathname:'/orders/new', state: {user}, className: "messageslink"}}>Profile</Link>
 			&nbsp; | &nbsp;
 			<span className="messageslink">{user.name}</span>
 			&nbsp; | &nbsp;

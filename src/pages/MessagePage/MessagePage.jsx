@@ -174,15 +174,15 @@ export default function MessagePage({ user, users, handleAddMessage }) {
           activeConversation={activeConversation}
           setActiveConversation={setActiveConversation}
 		  />
-      </aside>
-
-      {/* <ConversationBox
+      <ConversationBox
         handleDeleteMessage={handleDeleteMessage}
         user={user}
         messageItems={messageItems.filter(
           (message) => message.conversation === activeConversation
         )}
-      /> */}
+      />
+      </aside>
+
       <form autoComplete="off" onSubmit={handleSubmit}>
         <h2>Messages with {activeConversation}</h2>
         <h4>Last Seen: </h4>

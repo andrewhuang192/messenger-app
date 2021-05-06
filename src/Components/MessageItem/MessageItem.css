@@ -21,12 +21,13 @@
     border: .1vmin solid var(--tan-3);
     border-radius: 1vmin;
     text-align: left;
-    color: var(--text-light);
+    color: var(--white);
   }
   
   .textmessage {
     display: flex;
     flex-direction: column;
+    color: white;
   }
   
 .timestamp {

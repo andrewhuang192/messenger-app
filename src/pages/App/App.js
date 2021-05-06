@@ -21,24 +21,28 @@ export default function App() {
 	// var socket = io();
 	// console.log(socket)
 	
-	// useEffect(() => {
-	// 	async function getUsers() {
-	// 		const users = await usersAPI.getAllUsers();
-	// 		//users.sort((a,b) => (a.name > b.name) ? 1 : -1)
-	// 		setUsers(users);
-	// 	}
-	// 	getUsers();
-	// }, []);
+	useEffect(() => {
+		async function getUsers() {
+			const users = await usersAPI.getAllUsers();
+			//users.sort((a,b) => (a.name > b.name) ? 1 : -1)
+			setUsers(users);
+		}
+		getUsers();
+	}, []);
 
 	async function handleUpdatedUser(updatedUserData) {
 		const updatedUser = await usersAPI.update(updatedUserData);
-		console.log('working below user-api fetch')
+		// console.log('working below user-api fetch')
+		// console.log(updatedUserData)
+		// console.log(updatedUser)
+		
 		// console.log (user);
 		const updatedUsersArray = users.map(p =>
 			p._id === updatedUser._id ? updatedUser : p
 			);
 			setUsers(updatedUsersArray);
-	}
+			console.log(users)
+		}
 	// console.log('updated Users:', users);
 
 	async function handleAddMessage(newMessageData) {

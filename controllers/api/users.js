@@ -60,6 +60,6 @@ function checkToken(req, res) {
   async function index(req, res) {
 	const users = await User.find({});
 	// re-sort based upon the sortOrder of the categories
-	users.sort((a, b) => a.name.sortOrder - b.name.sortOrder);
+	users.sort((a, b) => a.name - b.name ? 1 : -1);
 	res.json(users);
   }
