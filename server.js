@@ -7,7 +7,7 @@ const http = require("http");
 const socketIO = require("socket.io");
 // Always require and configure near the top
 const dotenv = require("dotenv");
-require('dotenv').config({path: '.env'});
+require('dotenv').config();
 
 // connect to the database
 require('./config/database');
