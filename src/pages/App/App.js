@@ -42,7 +42,7 @@ export default function App() {
 	// console.log('updated Users:', users);
 
 	async function handleAddMessage(newMessageData) {
-		console.log(newMessageData);
+		// console.log(newMessageData);
 		const newMessage = await messagesAPI.create(newMessageData);
 		setMessages([...messages, newMessage]);
 	}

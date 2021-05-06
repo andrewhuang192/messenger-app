@@ -83,10 +83,10 @@ export default function MessageItem({ messageItem, handleDeleteMessage }) {
         <tr>
           
             <td className="name">{messageItem.sender}</td>
-            <td className="timestamp">{messageItem.createdAt}</td>
+            {/* <td className="timestamp">{messageItem.createdAt}</td> */}
             </tr>
             <tr>
-            <td className="textmessage">{messageItem.conversation}</td>
+            {/* <td className="textmessage">{messageItem.conversation}</td> */}
             <td className="textmessage">{messageItem.message}</td>
             <button
                     className='btn btn-xs btn-danger margin-left-10'
