@@ -4,6 +4,8 @@ const Conversation = require('../../models/conversation');
 module.exports = {
   index,
   create,
+  delete: deleteOne,
+
 };
 
 async function index(req, res) {
@@ -18,4 +20,9 @@ async function create(req, res) {
   const newMessage = await Message.create(req.body);
   console.log(newMessage)
   res.status(201).json(newMessage);
+}
+
+async function deleteOne(req, res) {
+  const deletedMessage = await Message.findByIdAndRemove(req.params.id);
+  res.status(200).json(deletedMessage);
 }

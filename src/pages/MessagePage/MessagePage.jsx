@@ -11,7 +11,7 @@ import clsx from "clsx";
 
 import './MessagePage.css';
 
-export default function MessagePage({user, users, handleAddMessage}) {
+export default function MessagePage({user, users, handleAddMessage }) {
 	
 	const useStyles = makeStyles({
 		container: {
@@ -155,6 +155,11 @@ export default function MessagePage({user, users, handleAddMessage}) {
 		}
 	  };
 
+	  async function handleDeleteMessage(id) {
+		await messagesAPI.deleteOne(id);
+		setMessageItems(messages.filter(p => p._id !== id));
+	}
+
 	async function handleCheckToken() {
 		usersService.checkToken();
 	}
@@ -178,6 +183,7 @@ export default function MessagePage({user, users, handleAddMessage}) {
 						<h2>Messages with {activeConversation}</h2>
 						<h4>Last Seen: </h4>
 									<ConversationBox
+										handleDeleteMessage={handleDeleteMessage}
 										user={user}
 										messageItems={messageItems.filter((message) => message.conversation === activeConversation)}
 									/>

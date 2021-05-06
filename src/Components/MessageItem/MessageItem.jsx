@@ -1,9 +1,10 @@
 import "./MessageItem.css";
 import {makeStyles} from "@material-ui/core";
 import React, {useRef, useEffect} from "react";
+// import message from "../../../models/message";
 // import clsx from "clsx";
 
-export default function MessageItem({ messageItem }) {
+export default function MessageItem({ messageItem, handleDeleteMessage }) {
 
   const useStyles = makeStyles({
 		container: {
@@ -73,6 +74,7 @@ export default function MessageItem({ messageItem }) {
 
   // const classes = useStyles();
 	// const messageRef = useRef()
+  // console.log(messageItem)
 
   // useEffect(() => messageRef.current.scrollIntoView({behavior: "smooth"}))
 
@@ -86,7 +88,12 @@ export default function MessageItem({ messageItem }) {
             <tr>
             <td className="textmessage">{messageItem.conversation}</td>
             <td className="textmessage">{messageItem.message}</td>
-
+            <button
+                    className='btn btn-xs btn-danger margin-left-10'
+                    onClick={() => handleDeleteMessage(messageItem._id)}
+                    >
+                    DELETE
+            </button>
         </tr>
       </tbody>
       // <li       

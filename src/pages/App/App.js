@@ -47,6 +47,11 @@ export default function App() {
 		setMessages([...messages, newMessage]);
 	}
 		
+	// async function handleDeleteMessage(id) {
+	// 	await messagesAPI.deleteOne(id);
+	// 	setMessages(messages.filter(p => p._id !== id));
+	// }
+	
 		return (
 			<main className='App'>
 			{user ? (
@@ -57,7 +62,7 @@ export default function App() {
 							<EditUserPage user={user} handleUpdatedUser={handleUpdatedUser} />
 						</Route>
 						<Route path='/orders'>
-							<MessagePage user={user} users={users} handleAddMessage={handleAddMessage} />
+							<MessagePage user={user} users={users} handleAddMessage={handleAddMessage}  />
 						</Route>
 						
 						<Redirect to='/orders' />
