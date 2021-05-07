@@ -4,7 +4,7 @@
 
 ### Getting Started?
 ---
-[Click here to start!](https://script-messenger.herokuapp.com/)
+[Click here to start!](https://shrouded-mountain-68261.herokuapp.com/)
 
 The Script Messenger app is an anonymous message board. 
 
