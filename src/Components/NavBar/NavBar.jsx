@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
-import { Paper, TextField, Button, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 // import "src/Components/NavBar/NavBar.css";
 

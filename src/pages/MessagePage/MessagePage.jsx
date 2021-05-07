@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Paper, TextField, Button, makeStyles } from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
 import * as messagesAPI from "../../utilities/messages-api";
-import * as usersService from "../../utilities/users-service";
+// import * as usersService from "../../utilities/users-service";
 import ConversationList from "../../Components/ConversationList/ConversationList";
 import ConversationBox from "../../Components/ConversationBox/ConversationBox";
 
@@ -87,7 +87,7 @@ export default function MessagePage({ user, users, handleAddMessage }) {
   const messageRef = useRef();
   const conversationsRef = useRef([]);
 
-  const { messages, sendMessage } = useChatRoom();
+  const { messages, sendMessage, incomingMessageToAdd } = useChatRoom();
   
   //Fetches all messages (messagesAPI.getAllMessages) and then use conversationsRef.current to match two users to find Active Conversation
   useEffect(function () {
@@ -135,22 +135,18 @@ export default function MessagePage({ user, users, handleAddMessage }) {
 
   useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
 
-  // const handleChange = (e) => {
-  // 	setInputBox({
-  // 	  ...inputBox,
-  // 	  [e.target.name]: e.target.value
-  // 	})
-  //   }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newMessage !== "") {
-      //   console.log(newMessage)
+        // console.log(newMessage)
       sendMessage(newMessage);
-      //   console.log(messages)
-      //   console.log(messages[0])
-    //   handleAddMessage(messages[0]);
-
+        // console.log(messages)
+        console.log(incomingMessageToAdd)
+		console.log(activeConversation)
+		// if (incomingMessageToAdd.isOwner === true) {
+		// 	let incomingMessageToAdd.conversation === activeConversation
+		// }
+      handleAddMessage(incomingMessageToAdd);
       setNewMessage("");
     }
   };
@@ -227,7 +223,7 @@ export default function MessagePage({ user, users, handleAddMessage }) {
                 type="submit"
                 variant="contained"
                 color="primary"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
                 className={classes.sendButton}
               >
                 Send

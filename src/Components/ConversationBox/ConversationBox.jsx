@@ -16,13 +16,13 @@ export default function ConversationBox({ messageItems, handleDeleteMessage }) {
 
     return (
     <main className="ConversationBox">
-          <table className="messageItems">
+          <div className="messageItems">
                 
                         {messages}
                 
            
               
-          </table>
+          </div>
     </main>
   );
 }

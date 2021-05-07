@@ -17,6 +17,7 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+
   const newMessage = await Message.create(req.body);
   console.log(newMessage)
   res.status(201).json(newMessage);
