@@ -53,7 +53,7 @@ const server = http.createServer(app);
 
 const io = socketIO(server, {
   cors: true,
-  origins:["localhost:3000"]
+  origins:["https://shrouded-mountain-68261.herokuapp.com:3000"]
 });
 
 app.use(cors());

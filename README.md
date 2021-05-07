@@ -43,5 +43,5 @@ WIREFRAME:
 - ---
 ### Screenshots:
 ---
-![pic1](screenshots/Screen Shot 2021-05-07 at 7.19.14 AM.png)
+![pic1](/screenshots/demo.png)
 
