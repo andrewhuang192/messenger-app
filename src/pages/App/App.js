@@ -33,9 +33,6 @@ export default function App() {
 		history.push("/");
 	}, [updatePage, history]);
 
-	// get our connection to the socket.io server
-	// var socket = io();
-	// console.log(socket)
 
 	
 	useEffect(() => {

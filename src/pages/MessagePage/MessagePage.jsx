@@ -89,7 +89,7 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
   const messageRef = useRef();
   const conversationsRef = useRef([]);
 
-  const { messages, sendMessage, incomingMessageToAdd } = useChatRoom(activeConversation);
+  const { messages, sendMessage, incomingMessageToAdd } = useChatRoom();
 
   //Fetches all messages (messagesAPI.getAllMessages) and then use conversationsRef.current to match two users to find Active Conversation
   useEffect(function () {
@@ -128,6 +128,7 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
     if (newMessage !== "") {
       sendMessage(newMessage);
       handleAddMessage(incomingMessageToAdd);
+
       setNewMessage("");
     }
   };
