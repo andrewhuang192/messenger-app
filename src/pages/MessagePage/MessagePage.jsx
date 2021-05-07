@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { Paper, TextField, Button, makeStyles } from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
 import * as messagesAPI from "../../utilities/messages-api";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import { getAllUsers } from '../../utilities/users-api';
+// import { getAllUsers } from '../../utilities/users-api';
 // import { getAllUsers } from '../../utilities/users-api';
 import * as usersAPI from '../../utilities/users-api';
 import * as messagesAPI from '../../utilities/messages-api';

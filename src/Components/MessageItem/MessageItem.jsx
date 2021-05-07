@@ -3,8 +3,8 @@ import "./MessageItem.css";
 // import React, {useRef, useEffect} from "react";
 // import message from "../../../models/message";
 // import clsx from "clsx";
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
 
 export default function MessageItem({
   messageItem,
