@@ -14,21 +14,25 @@
 
   }
   
-  .name {
+  div .name {
     height: 2vw;
     width: 6vw;
     font-size: 1vw;
-    background-color: var(--tan-1);
+    background-color: rgb(80, 29, 87);
     border: .1vmin solid var(--tan-3);
     border-radius: 1vmin;
     text-align: left;
-    color: var(--white);
+    color: white;
+
   }
   
   .textmessage {
     display: flex;
     flex-direction: column;
     color: white;
+    align-content: flex-start;
+    justify-content: flex-start;
+
   }
   
 .timestamp {
@@ -40,6 +44,10 @@
 tbody {
     margin: 150px 0px;
   }
+
+button {
+  background-color: rgb(80, 29, 87);
+}
   
 
  

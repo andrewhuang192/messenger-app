@@ -9,6 +9,7 @@ import * as messagesAPI from '../../utilities/messages-api';
 import AuthPage from '../AuthPage/AuthPage';
 import EditUserPage from '../EditUserPage/EditUserPage';
 import MessagePage from '../MessagePage/MessagePage';
+import EditMessagePage from '../EditMessagePage/EditMessagePage';
 import NavBar from '../../Components/NavBar/NavBar';
 
 import './App.css';
@@ -104,6 +105,9 @@ export default function App() {
 						</Route>
 						<Route path='/orders'>
 							<MessagePage user={user} users={users} handleAddMessage={handleAddMessage} handleDeleteMessage={handleDeleteMessage} handleUpdateMessage={handleUpdateMessage} />
+						</Route>
+						<Route path='/editConversation'>
+							<EditMessagePage handleUpdateMessage={handleUpdateMessage} />
 						</Route>
 						<Redirect to='/orders' />
 						

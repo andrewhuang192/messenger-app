@@ -25,11 +25,9 @@ export default function MessageItem({
 
   return (
     <div className="messageItem">
+		  <div className="textmessage">{messageItem.message}</div>
       <div>
         <div className="name">{messageItem.sender}</div>
-      </div>
-      <div>
-        <div className="textmessage">{messageItem.message}</div>
         <button
           className="btn btn-xs btn-danger margin-left-10"
           onClick={() => handleUpdateMessage(messageItem._id)}

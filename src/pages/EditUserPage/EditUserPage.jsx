@@ -7,8 +7,8 @@ import "./EditUserPage.css";
 export default function EditUserPage({ user, users, handleUpdatedUser }){
   // const [user, setUser] = useState(getUser());
 
-  console.log(user)
-  console.log(users)
+  // console.log(user)
+  // console.log(users)
 
   // const location = useLocation()
 
