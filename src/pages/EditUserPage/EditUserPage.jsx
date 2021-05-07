@@ -71,7 +71,7 @@ export default function EditUserPage({ user, handleUpdatedUser }){
           SAVE PROFILE
         </button>
         &nbsp;&nbsp;
-        <Link to='/'>CANCEL</Link>
+        <Link to='/'>RETURN TO MESSAGES</Link>
       </form>
     </>
   );

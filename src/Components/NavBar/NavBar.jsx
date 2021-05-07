@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
 
+import "./NavBar.css";
+
+
 export default function NavBar({ user, setUser }) {
 	function handleLogOut() {
 		// Delegate to the users-service
@@ -14,7 +17,7 @@ export default function NavBar({ user, setUser }) {
 		<nav>
 			<Link to='/orders' className="messageslink">Messages</Link>
 			&nbsp; | &nbsp;
-			<Link to={{pathname:'/orders/new', state: {user}, className: "messageslink"}}>Profile</Link>
+			<Link to='/orders/new' className="messageslink">Profile</Link>
 			&nbsp; | &nbsp;
 			<span className="messageslink">{user.name}</span>
 			&nbsp; | &nbsp;
