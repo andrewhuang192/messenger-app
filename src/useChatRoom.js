@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_MESSAGE_EVENT = "new-message-event";
-const SOCKET_SERVER_URL = "http://localhost:3030";
+const SOCKET_SERVER_URL = "https://shrouded-mountain-68261.herokuapp.com:3030";
 
 const useChatRoom = (activeConversation) => {
   const [messages, setMessages] = useState([]);
