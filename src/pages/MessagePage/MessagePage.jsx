@@ -87,7 +87,7 @@ export default function MessagePage({ user, users, handleAddMessage }) {
   const messageRef = useRef();
   const conversationsRef = useRef([]);
 
-  const { messages, sendMessage, incomingMessageToAdd } = useChatRoom();
+  const { messages, sendMessage, incomingMessageToAdd } = useChatRoom(activeConversation);
   
   //Fetches all messages (messagesAPI.getAllMessages) and then use conversationsRef.current to match two users to find Active Conversation
   useEffect(function () {
@@ -141,8 +141,8 @@ export default function MessagePage({ user, users, handleAddMessage }) {
         // console.log(newMessage)
       sendMessage(newMessage);
         // console.log(messages)
-        console.log(incomingMessageToAdd)
-		console.log(activeConversation)
+        // console.log(incomingMessageToAdd)
+		// console.log(activeConversation)
 		// if (incomingMessageToAdd.isOwner === true) {
 		// 	let incomingMessageToAdd.conversation === activeConversation
 		// }

@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 const NEW_MESSAGE_EVENT = "new-message-event";
 const SOCKET_SERVER_URL = "http://localhost:3030";
 
-const useChatRoom = () => {
+const useChatRoom = (activeConversation) => {
   const [messages, setMessages] = useState([]);
   const [incomingMessageToAdd, setIncomingMessageToAdd] = useState([]);
   const socketRef = useRef();
@@ -29,7 +29,7 @@ const useChatRoom = () => {
   
   const sendMessage = (messageBody) => {
     socketRef.current.emit(NEW_MESSAGE_EVENT, {
-      // conversation: "609432da5da2e13097e1e167",
+      conversation: activeConversation,
       message: messageBody,
       sender: socketRef.current.id,
     });
