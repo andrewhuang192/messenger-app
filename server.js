@@ -50,7 +50,7 @@ const NEW_MESSAGE_EVENT = "new-message-event";
 
 // const app = express();
 const server = http.createServer(app);
-// io = require('socket.io')
+
 const io = socketIO(server, {
   cors: true,
   origins:["localhost:3000"]

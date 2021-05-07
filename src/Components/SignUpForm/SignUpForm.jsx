@@ -12,12 +12,7 @@ export default class SignUpForm extends Component {
 			error: '',
 		};
 	}
-
-	// const [name, setName] = useState('')
-	// const [email, setEmail] = useState('')
-	// const [password, setPassword] = useState('')
-	// const [confirm, setConfirm] = useState('')
-	// const [error, setError] = useState('')
+	
 	handleChange = evt => {
 		this.setState({
 			[evt.target.name]: evt.target.value,

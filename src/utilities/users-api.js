@@ -16,16 +16,9 @@ export function checkToken() {
 
 export function getAllUsers() {
 	return sendRequest(BASE_URL);
-	// console.log(users)
-	// return fetch('/api/users').then(res => res.json());
 }
 
 export function update(loggedInUser) {
-    // return fetch(`http://localhost:3000/api/users/${loggedInUser._id}`, {
-    //   method: "PUT",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(loggedInUser),
-    // }).then(res => res.json());
 	return sendRequest(`${BASE_URL}/${loggedInUser._id}`, 'PUT', loggedInUser)
 	
   }

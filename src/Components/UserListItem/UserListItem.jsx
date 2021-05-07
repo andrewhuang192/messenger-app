@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './UserListItem.css';
 
 function UserListItem({ user }) {
-    // console.log(user)
 	return (
 		<div className='panel panel-default'>
 			<div className='panel-heading'>

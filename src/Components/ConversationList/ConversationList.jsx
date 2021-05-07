@@ -10,7 +10,6 @@ export default function ConversationList({ conversations, users, activeConversat
       key={convo}
       className={convo === activeConversation ? 'active' : ''}
       // FYI, the below will also work, but will give a warning
-      // className={cat === activeCat && 'active'}
       onClick={() => setActiveConversation(convo)}
     >
       {convo}

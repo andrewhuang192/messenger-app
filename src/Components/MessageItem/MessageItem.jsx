@@ -18,7 +18,7 @@ export default function MessageItem({
 //   const history = useHistory();
 //   console.log(messageItem)
 //     useEffect(() => {
-// 		// This is listening for each time puppies state is changed,
+// 		// This is listening for each time messageItem state is changed,
 // 		// then will run our function below to reroute
 // 		history.push("/");
 // 	}, [messageItem, history]);
@@ -42,15 +42,5 @@ export default function MessageItem({
         </button>
       </div>
     </div>
-    // <li
-    // 							key={messageItem._id}
-    // 							className={clsx(classes.messageItem, messageItem.isOwner ? classes.owner : classes.guest)}
-    //               >
-    // 							<span>{messageItem.sender}</span>
-    // 							<span>{messageItem.message}</span>
-    // 							<span>{messageItem.createdAt}</span>
-    // 							<span>{messageItem.conversation}</span>
-    // 							<span>{messageItem.isOwner}</span>
-    // </li>
   );
 }

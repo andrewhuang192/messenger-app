@@ -1,15 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import "./EditUserPage.css";
-// import { getUser } from '../../utilities/users-service';
+import { getUser } from '../../utilities/users-service';
 
 
 export default function EditUserPage({ user, users, handleUpdatedUser }){
-  // const [user, setUser] = useState(getUser());
-
-  // console.log(user)
-  // console.log(users)
-
   // const location = useLocation()
 
   const [invalidForm, setValidForm] = useState(true);

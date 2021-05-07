@@ -9,9 +9,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  // const messages = await Message.find({}).sort('message').populate('conversation').exec();
   const messages = await Message.find({});
-  // re-sort based upon the sortOrder of the categories
   messages.sort((a, b) => a.timestamp > b.timestamp);
   res.json(messages);
 }

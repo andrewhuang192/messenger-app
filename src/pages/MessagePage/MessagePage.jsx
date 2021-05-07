@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-
 import { Paper, TextField, Button, makeStyles } from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
 import * as messagesAPI from "../../utilities/messages-api";
@@ -15,8 +14,6 @@ import "./MessagePage.css";
 
 export default function MessagePage({ user, users, handleAddMessage, handleDeleteMessage, handleUpdateMessage }) {
 
-	console.log(user)
-	console.log(users)
   const useStyles = makeStyles({
     container: {
       display: "flex",
@@ -93,30 +90,19 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
   const conversationsRef = useRef([]);
 
   const { messages, sendMessage, incomingMessageToAdd } = useChatRoom(activeConversation);
- 
-//   const history = useHistory();
-//   useEffect(() => {
-// 	// This is listening for each time puppies state is changed,
-// 	// then will run our function below to reroute
-// 	history.push("/");
-// }, [messageItems, history]);
 
   //Fetches all messages (messagesAPI.getAllMessages) and then use conversationsRef.current to match two users to find Active Conversation
   useEffect(function () {
 	  async function getMessages() {
 		  const messages = await messagesAPI.getAllMessages();
-		  // console.log(messages)
 		  conversationsRef.current = messages.reduce((convos, message) => {
 			  const convo = message.conversation;
 			  return convos.includes(convo) ? convos : [...convos, convo];
 			}, []);
 			setMessageItems(messages);
-			// console.log(messageItems)
 			setActiveConversation(messages[0].conversation);
 			// setMessageItems(messages.filter((message) => message.conversation === activeConversation));
-			//   console.log(messages[0].conversation._id);
     }
-    // console.log(conversationsRef.current)
     getMessages();
   }, []);
 
@@ -125,16 +111,6 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
   };
-
-  // const handleSendMessage = () => {
-  //   if (newMessage !== "") {
-  // 	//   console.log('Message page hitting')
-  // 	sendMessage(newMessage);
-  // 	// console.log(messages)
-  // 	handleAddMessage(messages);
-  // 	setNewMessage("");
-  //   }
-  // };
 
   const handleKeyUp = (event) => {
     if (event.key === "Enter") {
@@ -150,14 +126,7 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newMessage !== "") {
-        // console.log(newMessage)
       sendMessage(newMessage);
-        // console.log(messages)
-        // console.log(incomingMessageToAdd)
-		// console.log(activeConversation)
-		// if (incomingMessageToAdd.isOwner === true) {
-		// 	let incomingMessageToAdd.conversation === activeConversation
-		// }
       handleAddMessage(incomingMessageToAdd);
       setNewMessage("");
     }
@@ -209,11 +178,8 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
                       message.isOwner ? classes.owner : classes.guest
                     )}
                   >
-                    {/* <span>{message.sender}</span> */}
                     <span>{message.message}</span>
-                    {/* <span>{message.createdAt}</span>
-                    <span>{message.conversation}</span>
-                    <span>{message.isOwner}</span> */}
+                 
                   </li>
                 ))}
 
@@ -226,11 +192,8 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
                       message.isOwner ? classes.owner : classes.guest
                     )}
                   >
-                    {/* <span>{message.sender}</span> */}
                     <span>{message.message}</span>
-                    {/* <span>{message.createdAt}</span>
-                    <span>{message.conversation}</span>
-                    <span>{message.isOwner}</span> */}
+                    
                   </li>
                 ))}
               </ol>
