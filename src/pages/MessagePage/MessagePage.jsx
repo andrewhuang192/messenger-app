@@ -149,7 +149,7 @@ export default function MessagePage({ user, users, handleAddMessage }) {
       sendMessage(newMessage);
       //   console.log(messages)
       //   console.log(messages[0])
-      handleAddMessage(messages[0]);
+    //   handleAddMessage(messages[0]);
 
       setNewMessage("");
     }
@@ -192,47 +192,8 @@ export default function MessagePage({ user, users, handleAddMessage }) {
               <ol className={classes.ol}>
 			  
 
-			  {messageItems.map((message, i) => (
-                  //   <li
-                  //     key={i}
-                  //     className="messageItem"
-                  //     // className={clsx(classes.message, message.isOwner ? classes.owner : classes.guest)}
-                  //   >
-                  //     <span className="textmessage">{message.message}</span>
-                  //     <span className="timestamp">{message.createdAt}</span>
-                  //     <span className="name">
-                  //       {message.isOwner ? `${user.name}` : "friend"}
-                  //     </span>
-                  //   </li>
-                  <li
-                    key={message._id}
-                    className={clsx(
-                      classes.message,
-                      message.isOwner ? classes.owner : classes.guest
-                    )}
-                  >
-                    {/* <span>{message.sender}</span> */}
-                    <span>{message.message}</span>
-                    {/* <span>{message.createdAt}</span>
-                    <span>{message.conversation}</span>
-                    <span>{message.isOwner}</span> */}
-                  </li>
-                ))}
-
-
-
                 {messages.map((message, i) => (
-                  //   <li
-                  //     key={i}
-                  //     className="messageItem"
-                  //     // className={clsx(classes.message, message.isOwner ? classes.owner : classes.guest)}
-                  //   >
-                  //     <span className="textmessage">{message.message}</span>
-                  //     <span className="timestamp">{message.createdAt}</span>
-                  //     <span className="name">
-                  //       {message.isOwner ? `${user.name}` : "friend"}
-                  //     </span>
-                  //   </li>
+                 
                   <li
                     key={message._id}
                     className={clsx(
