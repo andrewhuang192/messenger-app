@@ -8,7 +8,7 @@ export default function ForgotPassword() {
 		email: '',
 	});
 	const [error, setError] = useState('');
-
+	
 	function handleChange(evt) {
 		setResetPasswordCredentials({ ...resetPasswordCredentials, [evt.target.name]: evt.target.value });
 		setError('');

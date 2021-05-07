@@ -25,6 +25,12 @@ export default function App() {
 		history.push("/");
 	}, [users, history]);
 
+	useEffect(() => {
+		// This is listening for each time puppies state is changed,
+		// then will run our function below to reroute
+		history.push("/");
+	}, [messages, history]);
+
 
 	// get our connection to the socket.io server
 	// var socket = io();
@@ -44,7 +50,6 @@ export default function App() {
 		// console.log('working below user-api fetch')
 		// console.log(updatedUserData)
 		// console.log(updatedUser)
-		
 		// console.log(users)
 		// console.log (user);
 		const updatedUsersArray = users.map(p =>
@@ -63,10 +68,12 @@ export default function App() {
 		setMessages([...messages, newMessage]);
 	}
 		
-	// async function handleDeleteMessage(id) {
-	// 	await messagesAPI.deleteOne(id);
-	// 	setMessages(messages.filter(p => p._id !== id));
-	// }
+	async function handleDeleteMessage(id) {
+		await messagesAPI.deleteOne(id);
+		setMessages(messages.filter(p => p._id !== id));
+	}
+
+	
 	
 		return (
 			<main className='App'>
@@ -78,7 +85,7 @@ export default function App() {
 							<EditUserPage user={user} handleUpdatedUser={handleUpdatedUser} />
 						</Route>
 						<Route path='/orders'>
-							<MessagePage user={user} users={users} handleAddMessage={handleAddMessage}  />
+							<MessagePage user={user} users={users} handleAddMessage={handleAddMessage} handleDeleteMessage={handleDeleteMessage}  />
 						</Route>
 						<Redirect to='/orders' />
 						
