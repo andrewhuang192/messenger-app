@@ -9,11 +9,11 @@ const Message = require('./models/message');
 
   await User.deleteMany({});
   const users = await User.create([
-    {name: 'john doe', email: 'johndoe+13@gmail.com', password: '123'},
-    {name: 'user1', email: 'user1@gmail.com', password: '123'},
-    {name: 'user2', email: 'user2@gmail.com', password: '123'},
-    {name: 'user3', email: 'user3@gmail.com', password: '123'},
-    {name: 'user4', email: 'user4@gmail.com', password: '123'},
+    {name: 'john doe', email: 'johndoe+13@gmail.com', password: '123' },
+    {name: 'user1', email: 'user1@gmail.com', password: '123', bio: "" },
+    {name: 'user2', email: 'user2@gmail.com', password: '123', bio: "" },
+    {name: 'user3', email: 'user3@gmail.com', password: '123', bio: "" },
+    {name: 'user4', email: 'user4@gmail.com', password: '123', bio: "" },
 ]);    
 
   await Conversation.deleteMany({});

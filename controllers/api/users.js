@@ -54,6 +54,7 @@ function checkToken(req, res) {
 
   async function update(req, res) {
 	const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+	console.log('controller hitting')
 	res.status(200).json(updatedUser);
   }
 

@@ -1,9 +1,14 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import "./EditUserPage.css";
+// import { getUser } from '../../utilities/users-service';
 
 
-export default function EditUserPage({ user, handleUpdatedUser }){
+export default function EditUserPage({ user, users, handleUpdatedUser }){
+  // const [user, setUser] = useState(getUser());
+
+  console.log(user)
+  console.log(users)
 
   // const location = useLocation()
 
@@ -11,7 +16,6 @@ export default function EditUserPage({ user, handleUpdatedUser }){
   const [formData, setFormData] = useState(user)
   
   const formRef = useRef();
-  // console.log({user})
 
   useEffect(() => {
       formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true)
@@ -49,8 +53,17 @@ export default function EditUserPage({ user, handleUpdatedUser }){
             className="form-control"
             name="email"
             value={ formData.email}
-            onChange={ handleChange}
+            onChange={ handleChange }
             required
+          />
+        </div>
+        <div className="form-group">
+          <label>User Bio (required)</label>
+          <input
+            className="form-control"
+            name="bio"
+            value={ formData.bio}
+            onChange={ handleChange }
           />
         </div>
         <div className="form-group">
@@ -59,7 +72,7 @@ export default function EditUserPage({ user, handleUpdatedUser }){
             className="form-control"
             name="date"
             value={ formData.createdAt }
-            onChange={ handleChange}
+            onChange={ handleChange }
           />
           {user.createdAt}
         </div>

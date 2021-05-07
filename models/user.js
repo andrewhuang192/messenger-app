@@ -21,6 +21,12 @@ const userSchema = new Schema(
 			minLength: 3,
 			required: true,
 		},
+		bio: {
+			type: String,
+			default: function(){
+				return "";
+			},
+		}
 		// conversation: [conversationSchema],
 	},
 	{

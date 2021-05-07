@@ -12,20 +12,26 @@ export function create(newMessage) {
   // console.log(newMessage)
   return sendRequest(BASE_URL, "POST", newMessage);
   // return fetch('/api/messages', {
-
   // 	method: "POST",
   // 	headers: { "content-type": "application/json" },
   // 	body: JSON.stringify(newMessage),
-
   // }).then(res => res.json());
 }
 
 export function deleteOne(id) {
 	return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
-
 //   return fetch(`/api/messages/${id}`, {
 //     method: "DELETE",
 //   }).then((res) => res.json());
+}
+
+export function update(messageToUpdate) {
+  // return fetch(`http://localhost:3000/api/users/${messageToUpdate._id}`, {
+  //   method: "PUT",
+  //   headers: { "content-type": "application/json" },
+  //   body: JSON.stringify(messageToUpdate),
+  // }).then(res => res.json());
+return sendRequest(`${BASE_URL}/${messageToUpdate._id}`, 'PUT', messageToUpdate)
 }
 
 /*--- Helper Functions ---*/

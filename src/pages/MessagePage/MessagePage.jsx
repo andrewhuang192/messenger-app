@@ -13,7 +13,10 @@ import clsx from "clsx";
 
 import "./MessagePage.css";
 
-export default function MessagePage({ user, users, handleAddMessage, handleDeleteMessage }) {
+export default function MessagePage({ user, users, handleAddMessage, handleDeleteMessage, handleUpdateMessage }) {
+
+	console.log(user)
+	console.log(users)
   const useStyles = makeStyles({
     container: {
       display: "flex",
@@ -90,14 +93,13 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
   const conversationsRef = useRef([]);
 
   const { messages, sendMessage, incomingMessageToAdd } = useChatRoom(activeConversation);
-  
+ 
 //   const history = useHistory();
 //   useEffect(() => {
 // 	// This is listening for each time puppies state is changed,
 // 	// then will run our function below to reroute
 // 	history.push("/");
 // }, [messageItems, history]);
-
 
   //Fetches all messages (messagesAPI.getAllMessages) and then use conversationsRef.current to match two users to find Active Conversation
   useEffect(function () {
@@ -182,6 +184,7 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
 		  />
       <ConversationBox
         handleDeleteMessage={handleDeleteMessage}
+		handleUpdateMessage={handleUpdateMessage}
         user={user}
         messageItems={messageItems.filter(
           (message) => message.conversation === activeConversation
