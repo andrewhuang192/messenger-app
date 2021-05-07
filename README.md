@@ -12,7 +12,7 @@ Get started by clicking on the link to create an account.
 
 
 ERD:
-![erd](/screenshots/ERD.png)
+![erd](/screenshots/image.png)
 
 TRELLO:
 [Link to Trello Board](https://trello.com/b/smAuKNWq/messenger-app)
@@ -43,7 +43,5 @@ WIREFRAME:
 - ---
 ### Screenshots:
 ---
-![pic1](/screenshots/1.png)
-![pic2](/screenshots/2.png)
-![pic3](/screenshots/3.png)
-![pic4](/screenshots/4.png)
+![pic1](screenshots/Screen Shot 2021-05-07 at 7.19.14 AM.png)
+
