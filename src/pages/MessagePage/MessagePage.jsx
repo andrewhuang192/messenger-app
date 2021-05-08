@@ -154,7 +154,7 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
 		  />
       <ConversationBox
         handleDeleteMessage={handleDeleteMessage}
-		handleUpdateMessage={handleUpdateMessage}
+		  // handleUpdateMessage={handleUpdateMessage}
         user={user}
         messageItems={messageItems.filter(
           (message) => message.conversation === activeConversation

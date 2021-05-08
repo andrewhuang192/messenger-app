@@ -88,7 +88,7 @@ export default function App() {
 							<MessagePage user={user} users={users} handleAddMessage={handleAddMessage} handleDeleteMessage={handleDeleteMessage} handleUpdateMessage={handleUpdateMessage} />
 						</Route>
 						
-						<Redirect to='/' />
+						<Redirect to='/orders' />
 						
 					</Switch>
 				</>

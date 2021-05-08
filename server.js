@@ -5,11 +5,9 @@ const logger = require('morgan');
 const cors = require("cors");
 const http = require("http");
 const socketIO = require("socket.io");
-// Always require and configure near the top
 const dotenv = require("dotenv");
 require('dotenv').config();
 
-// connect to the database
 require('./config/database');
 
 const app = express();
@@ -21,11 +19,9 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Middleware to verify token and assign user object of payload to req.user.
-// Be sure to mount before routes
 app.use(require('./config/checkToken'));
 
 //api routes will go here
-// app.use('/api/users', require('./routes/api/users'))
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/messages', ensureLoggedIn, require('./routes/api/messages'))
@@ -37,7 +33,7 @@ app.get('/*', function (req, res) {
 });
 
 // Configure to use port 3001 instead of 3000 during development to avoid collision with React's dev server
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 app.listen(port, function () {
 	console.log(`Express app running on port ${port}`);
 });
@@ -53,12 +49,12 @@ const server = http.createServer(app);
 
 const io = socketIO(server, {
   cors: true,
-  origins:["https://shrouded-mountain-68261.herokuapp.com:3000"]
+  origins:["localhost:3000"]
 });
 
 app.use(cors());
 
-// Hardcoding a room name here. This is to indicate that you can do more by creating multiple rooms as needed.
+// Hardcoding a room name here.
 const room = "general"
 
 io.on("connection", (socket) => {
