@@ -32,8 +32,6 @@ export default function App() {
 		// then will run our function below to reroute
 		history.push("/");
 	}, [updatePage, history]);
-
-
 	
 	useEffect(() => {
 		async function getUsers() {
