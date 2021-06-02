@@ -20,8 +20,6 @@ const useChatRoom = (activeConversation) => {
       setMessages((messages) => [...messages, incomingMessage]);
       setIncomingMessageToAdd(incomingMessage);
     });
-    
-    
     return () => {
       socketRef.current.disconnect();
     };
@@ -36,7 +34,6 @@ const useChatRoom = (activeConversation) => {
   };
   // console.log(messages)
   // console.log(incomingMessageToAdd)
-
   return { messages, sendMessage, incomingMessageToAdd };
 };
 

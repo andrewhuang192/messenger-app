@@ -12,8 +12,13 @@ import clsx from "clsx";
 
 import "./MessagePage.css";
 
-export default function MessagePage({ user, users, handleAddMessage, handleDeleteMessage, handleUpdateMessage }) {
-
+export default function MessagePage({
+  user,
+  users,
+  handleAddMessage,
+  handleDeleteMessage,
+  handleUpdateMessage,
+}) {
   const useStyles = makeStyles({
     container: {
       display: "flex",
@@ -23,7 +28,7 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
       backgroundColor: "#263238",
     },
     paper: {
-      width: "50em",
+      width: "90%",
       height: "80%",
       position: "relative",
     },
@@ -89,19 +94,20 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
   const messageRef = useRef();
   const conversationsRef = useRef([]);
 
-  const { messages, sendMessage, incomingMessageToAdd } = useChatRoom(activeConversation);
+  const { messages, sendMessage, incomingMessageToAdd } =
+    useChatRoom(activeConversation);
 
   //Fetches all messages (messagesAPI.getAllMessages) and then use conversationsRef.current to match two users to find Active Conversation
   useEffect(function () {
-	  async function getMessages() {
-		  const messages = await messagesAPI.getAllMessages();
-		  conversationsRef.current = messages.reduce((convos, message) => {
-			  const convo = message.conversation;
-			  return convos.includes(convo) ? convos : [...convos, convo];
-			}, []);
-			setMessageItems(messages);
-			setActiveConversation(messages[0].conversation);
-			// setMessageItems(messages.filter((message) => message.conversation === activeConversation));
+    async function getMessages() {
+      const messages = await messagesAPI.getAllMessages();
+      conversationsRef.current = messages.reduce((convos, message) => {
+        const convo = message.conversation;
+        return convos.includes(convo) ? convos : [...convos, convo];
+      }, []);
+      setMessageItems(messages);
+      setActiveConversation(messages[0].conversation);
+      // setMessageItems(messages.filter((message) => message.conversation === activeConversation));
     }
     getMessages();
   }, []);
@@ -128,20 +134,22 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
     if (newMessage !== "") {
       sendMessage(newMessage);
       handleAddMessage(incomingMessageToAdd);
-
+      // console.log(messages)
       setNewMessage("");
     }
   };
 
-//   async function handleDeleteMessage(id) {
-//     await messagesAPI.deleteOne(id);
-//     setMessageItems(messages.filter((p) => p._id !== id));
-//   }
+  //   async function handleDeleteMessage(id) {
+  //     await messagesAPI.deleteOne(id);
+  //     setMessageItems(messages.filter((p) => p._id !== id));
+  //   }
 
-//   async function handleCheckToken() {
-//     usersService.checkToken();
-//   }
+  //   async function handleCheckToken() {
+  //     usersService.checkToken();
+  //   }
 
+  // console.log(messageItems);
+  // console.log(messages);
   return (
     <main className="MessagePage">
       <aside>
@@ -151,27 +159,29 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
           conversations={conversationsRef.current}
           activeConversation={activeConversation}
           setActiveConversation={setActiveConversation}
-		  />
-      <ConversationBox
+        />
+        {/* <ConversationBox
         handleDeleteMessage={handleDeleteMessage}
 		  // handleUpdateMessage={handleUpdateMessage}
         user={user}
         messageItems={messageItems.filter(
           (message) => message.conversation === activeConversation
         )}
-      />
+      /> */}
       </aside>
 
       <form autoComplete="off" onSubmit={handleSubmit}>
         <h2>Messages with {activeConversation}</h2>
         <h4>Last Seen: </h4>
         {/* <div className={classes.container}> */}
-          <Paper elevation={5} className={classes.paper}>
-            <div className={classes.messageContainer}>
-              <ol className={classes.ol}>
-			  
-			  {messageItems.filter((message) => message.conversation === activeConversation).map((message, i)  => (
-               
+        <Paper elevation={5} className={classes.paper}>
+          <div className={classes.messageContainer}>
+            <ol className={classes.ol}>
+              {messageItems
+                .filter(
+                  (message) => message.conversation === activeConversation
+                )
+                .map((message, i) => (
                   <li
                     key={message._id}
                     className={clsx(
@@ -179,50 +189,63 @@ export default function MessagePage({ user, users, handleAddMessage, handleDelet
                       message.isOwner ? classes.owner : classes.guest
                     )}
                   >
-                    <span>{message.message}</span>
-                 
+                    <span>
+                      {message.message}
+                      <Button
+                        variant="light"
+                        onClick={() => handleDeleteMessage(message._id)}
+                      >
+                        DELETE
+                      </Button>
+                    </span>
                   </li>
                 ))}
 
-                {messages.map((message, i) => (
-                 
-                  <li
-                    key={message._id}
-                    className={clsx(
-                      classes.message,
-                      message.isOwner ? classes.owner : classes.guest
-                    )}
-                  >
-                    <span>{message.message}</span>
-                    
-                  </li>
-                ))}
-              </ol>
-              <div ref={messageRef}></div>
-            </div>
-            <div className={classes.action}>
-              <TextField
-                className={classes.messageInput}
-                id="message"
-                label="Message"
-                placeholder="enter message here"
-                variant="outlined"
-                value={newMessage}
-                onChange={handleNewMessageChange}
-                onKeyUp={handleKeyUp}
-              />
-              <Button
-                disabled={!newMessage}
-                type="submit"
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit}
-                className={classes.sendButton}
-              >
-                Send
-              </Button>
-            </div>
-          </Paper>
+              {messages.map((message, i) => (
+                <li
+                  key={message._id}
+                  className={clsx(
+                    classes.message,
+                    message.isOwner ? classes.owner : classes.guest
+                  )}
+                >
+                  <span>
+                    {message.message}
+                    <button
+                      className="btn btn-xs btn-danger margin-left-10"
+                      onClick={() => handleDeleteMessage(message._id)}
+                    >
+                      DELETE
+                    </button>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <div ref={messageRef}></div>
+          </div>
+          <div className={classes.action}>
+            <TextField
+              className={classes.messageInput}
+              id="message"
+              label="Message"
+              placeholder="enter message here"
+              variant="outlined"
+              value={newMessage}
+              onChange={handleNewMessageChange}
+              onKeyUp={handleKeyUp}
+            />
+            <Button
+              disabled={!newMessage}
+              type="submit"
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+              className={classes.sendButton}
+            >
+              Send
+            </Button>
+          </div>
+        </Paper>
         {/* </div> */}
       </form>
     </main>

@@ -18,6 +18,7 @@ export default function EditUserPage({ user, users, handleUpdatedUser }){
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(formData)
     handleUpdatedUser(formData);
   }
 
