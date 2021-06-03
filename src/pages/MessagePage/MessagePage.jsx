@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 // import { useHistory } from 'react-router-dom';
-import { Paper, TextField, Button, makeStyles } from "@material-ui/core";
+import { Paper, TextField, Button, makeStyles} from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
 import * as messagesAPI from "../../utilities/messages-api";
 // import * as usersService from "../../utilities/users-service";
@@ -93,6 +93,12 @@ export default function MessagePage({
   const classes = useStyles();
   const messageRef = useRef();
   const conversationsRef = useRef([]);
+  const [showMessage, setShowMessage] = useState(false);
+  const handleCloseMessage = () => setShowMessage(false);
+  const handleShowMessage = (e) => {
+    console.log(e.target.value);
+    setShowMessage(true);
+  };
 
   const { messages, sendMessage, incomingMessageToAdd } =
     useChatRoom(activeConversation);
@@ -197,6 +203,22 @@ export default function MessagePage({
                       >
                         DELETE
                       </Button>
+                      <Button
+                        className="btn btn-s btn-warning"
+                        onClick={handleShowMessage}
+                      >
+                        EDIT
+                      </Button>
+                      {showMessage ? (
+
+                      <form showMessage={showMessage}>
+                        <TextField>{message.message}</TextField>
+                        <Button onClick={handleCloseMessage}>Update</Button>
+                      </form>
+                      
+                      ):(
+                        ""
+                      )}
                     </span>
                   </li>
                 ))}

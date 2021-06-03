@@ -65,6 +65,7 @@ export default function App() {
 	}
 
 	async function handleUpdateMessage(updatedMessageData) {
+		console.log(updatedMessageData)
 		const updatedMessage = await messagesAPI.update(updatedMessageData);
 		const updatedMessagesArray = messages.map(p =>
 			p._id === updatedMessage._id ? updatedMessage : p
