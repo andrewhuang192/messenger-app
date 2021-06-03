@@ -232,13 +232,29 @@ export default function MessagePage({
                   )}
                 >
                   <span>
-                    {message.message}
-                    <button
-                      className="btn btn-xs btn-danger margin-left-10"
-                      onClick={() => handleDeleteMessage(message._id)}
-                    >
-                      DELETE
-                    </button>
+                  {message.message}
+                      <Button
+                        variant="light"
+                        onClick={() => handleDeleteMessage(message._id)}
+                      >
+                        DELETE
+                      </Button>
+                      <Button
+                        className="btn btn-s btn-warning"
+                        onClick={handleShowMessage}
+                      >
+                        EDIT
+                      </Button>
+                      {showMessage ? (
+
+                      <form showMessage={showMessage}>
+                        <TextField>{message.message}</TextField>
+                        <Button onClick={handleCloseMessage}>Update</Button>
+                      </form>
+                      
+                      ):(
+                        ""
+                      )}
                   </span>
                 </li>
               ))}

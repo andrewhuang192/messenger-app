@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function ConversationList({ conversations, users, activeConversation, setActiveConversation }) {
-  console.log(conversations)
+  // console.log(conversations)
   const convos = conversations.map(convo =>
     <li
       key={convo}
