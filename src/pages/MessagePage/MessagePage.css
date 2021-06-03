@@ -34,7 +34,8 @@
     margin: 0px 0px;
   }
   .MessagePage main {
-    background-color: rgb(57, 19, 62)
+    background-color: white;
+    border-color: white;
   }
   
   .MessageItem {

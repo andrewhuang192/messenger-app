@@ -26,7 +26,9 @@ async function deleteOne(req, res) {
 }
 
 async function update(req, res) {
-	const updatedMessage = await Message.findByIdAndUpdate(req.params.id, req.body, {new: true});
 	console.log('controller hitting')
+  console.log(req)
+  console.log(req.body)
+	const updatedMessage = await Message.findByIdAndUpdate(req.params.id, req.body, {new: true});
 	res.status(200).json(updatedMessage);
   }

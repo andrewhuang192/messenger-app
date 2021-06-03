@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 // import { useHistory } from 'react-router-dom';
-import { Paper, TextField, Button, makeStyles} from "@material-ui/core";
+import { Paper, TextField, Button, makeStyles } from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
 import * as messagesAPI from "../../utilities/messages-api";
 // import * as usersService from "../../utilities/users-service";
@@ -26,6 +26,7 @@ export default function MessagePage({
       justifyContent: "center",
       height: "50vh",
       backgroundColor: "#263238",
+      borderColor: "white",
     },
     paper: {
       width: "90%",
@@ -51,6 +52,8 @@ export default function MessagePage({
     messageContainer: {
       overflowY: "auto",
       height: "85%",
+      backgroundColor: "white",
+      borderColor: "white",
     },
     divider: {
       margin: "0.1em",
@@ -166,14 +169,6 @@ export default function MessagePage({
           activeConversation={activeConversation}
           setActiveConversation={setActiveConversation}
         />
-        {/* <ConversationBox
-        handleDeleteMessage={handleDeleteMessage}
-		  // handleUpdateMessage={handleUpdateMessage}
-        user={user}
-        messageItems={messageItems.filter(
-          (message) => message.conversation === activeConversation
-        )}
-      /> */}
       </aside>
 
       <form autoComplete="off" onSubmit={handleSubmit}>
@@ -183,81 +178,13 @@ export default function MessagePage({
         <Paper elevation={5} className={classes.paper}>
           <div className={classes.messageContainer}>
             <ol className={classes.ol}>
-              {messageItems
-                .filter(
-                  (message) => message.conversation === activeConversation
-                )
-                .map((message, i) => (
-                  <li
-                    key={message._id}
-                    className={clsx(
-                      classes.message,
-                      message.isOwner ? classes.owner : classes.guest
-                    )}
-                  >
-                    <span>
-                      {message.message}
-                      <Button
-                        variant="light"
-                        onClick={() => handleDeleteMessage(message._id)}
-                      >
-                        DELETE
-                      </Button>
-                      <Button
-                        className="btn btn-s btn-warning"
-                        onClick={handleShowMessage}
-                      >
-                        EDIT
-                      </Button>
-                      {showMessage ? (
-
-                      <form showMessage={showMessage}>
-                        <TextField>{message.message}</TextField>
-                        <Button onClick={handleCloseMessage}>Update</Button>
-                      </form>
-                      
-                      ):(
-                        ""
-                      )}
-                    </span>
-                  </li>
-                ))}
-
-              {messages.map((message, i) => (
-                <li
-                  key={message._id}
-                  className={clsx(
-                    classes.message,
-                    message.isOwner ? classes.owner : classes.guest
-                  )}
-                >
-                  <span>
-                  {message.message}
-                      <Button
-                        variant="light"
-                        onClick={() => handleDeleteMessage(message._id)}
-                      >
-                        DELETE
-                      </Button>
-                      <Button
-                        className="btn btn-s btn-warning"
-                        onClick={handleShowMessage}
-                      >
-                        EDIT
-                      </Button>
-                      {showMessage ? (
-
-                      <form showMessage={showMessage}>
-                        <TextField>{message.message}</TextField>
-                        <Button onClick={handleCloseMessage}>Update</Button>
-                      </form>
-                      
-                      ):(
-                        ""
-                      )}
-                  </span>
-                </li>
-              ))}
+              <ConversationBox
+                messageItems={messageItems}
+                messages={messages}
+                activeConversation={activeConversation}
+                handleDeleteMessage={handleDeleteMessage}
+                handleUpdateMessage={handleUpdateMessage}
+              />
             </ol>
             <div ref={messageRef}></div>
           </div>
