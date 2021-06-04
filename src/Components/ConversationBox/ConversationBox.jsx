@@ -85,7 +85,7 @@ export default function ConversationBox({
                       {showMessage ? (
 
                       <form showMessage={showMessage}>
-                        <TextField>{message.message}</TextField>
+                        <TextField placeholder={message.message} />
                         <Button onClick={handleCloseMessage}>Update</Button>
                       </form>
                       

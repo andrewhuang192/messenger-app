@@ -93,7 +93,7 @@ export default function ConversationList({
                       {showMessage ? (
 
                       <form showMessage={showMessage}>
-                        <TextField>{conversation.name}</TextField>
+                        <TextField placeholder={conversation.name}/>
                         <Button onClick={handleCloseMessage}>Update</Button>
                       </form>
                       
