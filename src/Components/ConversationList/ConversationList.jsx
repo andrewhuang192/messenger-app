@@ -1,11 +1,11 @@
 import "./ConversationList.css";
 // import UserListItem from '../UserListItem/UserListItem';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import React, { useRef, useState, useEffect } from "react";
 // import { useHistory } from 'react-router-dom';
 // import { getUsers } from '../../utilities/users-service';
 import * as conversationsAPI from "../../utilities/conversations-api";
-import { Paper, TextField, Button, makeStyles} from "@material-ui/core";
+import { TextField, Button} from "@material-ui/core";
 
 export default function ConversationList({
   user,

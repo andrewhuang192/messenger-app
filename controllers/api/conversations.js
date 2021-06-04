@@ -6,8 +6,8 @@ module.exports = {
 };
 
 async function index(req, res) {
-  console.log('hitting')
   const conversations = await Conversation.find({});
-  console.log(conversations)
+  // console.log('hitting')
+  // console.log(conversations)
   res.json(conversations);
 }

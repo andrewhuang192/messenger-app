@@ -96,12 +96,6 @@ export default function MessagePage({
   const classes = useStyles();
   const messageRef = useRef();
   const conversationsRef = useRef([]);
-  const [showMessage, setShowMessage] = useState(false);
-  const handleCloseMessage = () => setShowMessage(false);
-  const handleShowMessage = (e) => {
-    console.log(e.target.value);
-    setShowMessage(true);
-  };
 
   const { messages, sendMessage, incomingMessageToAdd } =
     useChatRoom(activeConversation);

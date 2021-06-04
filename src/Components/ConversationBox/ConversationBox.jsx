@@ -1,11 +1,11 @@
 import './ConversationBox.css';
-import MessageItem from '../MessageItem/MessageItem';
-import React, { useRef, useState, useEffect } from "react";
+// import MessageItem from '../MessageItem/MessageItem';
+import React, { useRef, useState } from "react";
 // import { useHistory } from 'react-router-dom';
-import { Paper, TextField, Button, makeStyles} from "@material-ui/core";
+import { TextField, Button, makeStyles} from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
-import * as messagesAPI from "../../utilities/messages-api";
-import useChatRoom from "../../useChatRoom.js";
+// import * as messagesAPI from "../../utilities/messages-api";
+// import useChatRoom from "../../useChatRoom.js";
 import clsx from "clsx";
 
 export default function ConversationBox({ 
@@ -43,8 +43,8 @@ export default function ConversationBox({
         },
       });
   const classes = useStyles();
-  const messageRef = useRef();
-  const conversationsRef = useRef([]);
+  // const messageRef = useRef();
+  // const conversationsRef = useRef([]);
   const [showMessage, setShowMessage] = useState(false);
   const handleCloseMessage = () => setShowMessage(false);
   const handleShowMessage = (e) => {

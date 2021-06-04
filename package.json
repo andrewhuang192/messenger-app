@@ -1,5 +1,5 @@
 {
-  "name": "sei-cafe",
+  "name": "script",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,6 +28,9 @@
     "socket.io": "^4.0.1",
     "socket.io-client": "^4.0.1",
     "web-vitals": "^1.0.1"
+  },
+  "engines": {
+    "node": "12.17.x"
   },
   "scripts": {
     "start": "react-scripts start",
