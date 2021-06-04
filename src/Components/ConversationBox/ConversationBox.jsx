@@ -7,6 +7,7 @@ import { TextField, Button, makeStyles} from "@material-ui/core";
 // import * as messagesAPI from "../../utilities/messages-api";
 // import useChatRoom from "../../useChatRoom.js";
 import clsx from "clsx";
+import EditMessageForm from '../EditMessageForm/EditMessageForm';
 
 export default function ConversationBox({ 
     messageItems, 
@@ -84,10 +85,7 @@ export default function ConversationBox({
                       </Button>
                       {showMessage ? (
 
-                      <form showMessage={showMessage}>
-                        <TextField placeholder={message.message} />
-                        <Button onClick={handleCloseMessage}>Update</Button>
-                      </form>
+                      <EditMessageForm message={message} message_id={message._id} handleUpdateMessage={handleUpdateMessage} />
                       
                       ):(
                         ""

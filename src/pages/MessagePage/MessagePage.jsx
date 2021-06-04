@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Paper, TextField, Button, makeStyles } from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
 import * as messagesAPI from "../../utilities/messages-api";
+import * as conversationsAPI from "../../utilities/conversations-api";
 // import * as usersService from "../../utilities/users-service";
 import ConversationList from "../../Components/ConversationList/ConversationList";
 import ConversationBox from "../../Components/ConversationBox/ConversationBox";
@@ -89,6 +90,8 @@ export default function MessagePage({
   });
 
   // eslint-disable-next-line
+  const [conversationItems, setConversationItems] = useState([]);
+
   const [activeConversation, setActiveConversation] = useState("");
   const [messageItems, setMessageItems] = useState([]);
   // const [inputBox, setInputBox] = useState("");
@@ -113,6 +116,16 @@ export default function MessagePage({
       // setMessageItems(messages.filter((message) => message.conversation === activeConversation));
     }
     getMessages();
+  }, []);
+
+  useEffect(function () {
+    async function getConversations() {
+      const conversations = await conversationsAPI.getAllConversations();
+      setConversationItems(conversations);
+      // setActiveConversation(conversations[0]);
+      // setMessageItems(conversations.filter((message) => message.conversation === activeConversation));
+    }
+    getConversations();
   }, []);
 
   /**-- Helper Functions for ConversationBox --**/
@@ -142,22 +155,18 @@ export default function MessagePage({
     }
   };
 
-  //   async function handleDeleteMessage(id) {
-  //     await messagesAPI.deleteOne(id);
-  //     setMessageItems(messages.filter((p) => p._id !== id));
-  //   }
-
   //   async function handleCheckToken() {
   //     usersService.checkToken();
   //   }
 
-  // console.log(messageItems);
+  // console.log(conversationItems);
   // console.log(messages);
   return (
     <main className="MessagePage">
       <aside>
         {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
         <h4>Conversations</h4>
+
         <ConversationList
           user={user}
           users={users}
@@ -168,8 +177,26 @@ export default function MessagePage({
       </aside>
 
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <h2>Messages with {activeConversation}</h2>
-        <h4>Last Seen: </h4>
+        {conversationItems.map((conversation) => (
+          <>
+            {conversation._id === activeConversation ? (
+              <>
+                <h2>
+                  Messages with &nbsp;&nbsp;
+                  {users.map((user) => (
+                    <>{user._id === conversation.user1 ? user.name : ""}</>
+                  ))}
+                  &nbsp;&nbsp;and&nbsp;&nbsp;
+                  {users.map((user) => (
+                    <>{user._id === conversation.user2 ? user.name : ""}</>
+                  ))}
+                </h2>
+              </>
+            ) : (
+              ""
+            )}
+          </>
+        ))}
         {/* <div className={classes.container}> */}
         <Paper elevation={5} className={classes.paper}>
           <div className={classes.messageContainer}>
