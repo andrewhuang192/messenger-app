@@ -5,7 +5,7 @@ import React, { useRef, useState, useEffect } from "react";
 // import { useHistory } from 'react-router-dom';
 // import { getUsers } from '../../utilities/users-service';
 import * as conversationsAPI from "../../utilities/conversations-api";
-import { TextField, Button} from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 
 export default function ConversationList({
   user,
@@ -21,7 +21,7 @@ export default function ConversationList({
     setShowMessage(true);
   };
   const [conversationItems, setConversationItems] = useState([]);
-  
+
   useEffect(function () {
     async function getConversations() {
       const conversations = await conversationsAPI.getAllConversations();
@@ -62,48 +62,42 @@ export default function ConversationList({
     <ul className="ConversationList">
       {conversationItems.map((conversation) => (
         <>
-        {conversation.user1===user._id || conversation.user2 === user._id ? (
-          <li
-            key={conversation._id}
-            className={conversation._id === activeConversation ? "active" : ""}
-            // FYI, the below will also work, but will give a warning
-            onClick={() => setActiveConversation(conversation._id)}
-          >
-            <span>
-           
-              {users.map((user) => (
-                <>
-                {(user._id===conversation.user1) ? user.name : ("")}
-                </>
-              ))}
-             &nbsp;&nbsp;and&nbsp;&nbsp;
-              {users.map((user) => (
-                <>
-                {(user._id===conversation.user2) ? user.name : ("")}
-                </>
-              ))}
-                      
-                     
-                      <Button
-                        className="btn btn-s btn-warning"
-                        onClick={handleShowMessage}
-                      >
-                        EDIT
-                      </Button>
-                      {showMessage ? (
-
-                      <form showMessage={showMessage}>
-                        <TextField placeholder={conversation.name}/>
-                        <Button onClick={handleCloseMessage}>Update</Button>
-                      </form>
-                      
-                      ):(
-                        ""
-                      )}
-                    </span>
-          </li>
-        ) : ("")}
-          
+          {conversation.user1 === user._id ||
+          conversation.user2 === user._id ? (
+            <li
+              key={conversation._id}
+              className={
+                conversation._id === activeConversation ? "active" : ""
+              }
+              // FYI, the below will also work, but will give a warning
+              onClick={() => setActiveConversation(conversation._id)}
+            >
+              <span as="h4">
+                {users.map((user) => (
+                  <>{user._id === conversation.user1 ? user.name : ""}</>
+                ))}
+                &nbsp;&nbsp;and&nbsp;&nbsp;
+                {users.map((user) => (
+                  <>{user._id === conversation.user2 ? user.name : ""}</>
+                ))}
+                <a onClick={handleShowMessage}>
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                  <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                {showMessage ? (
+                  <form showMessage={showMessage}>
+                    <TextField placeholder={conversation.name} />
+                    <Button onClick={handleCloseMessage}>Update</Button>
+                  </form>
+                ) : (
+                  ""
+                )}
+              </span>
+            </li>
+          ) : (
+            ""
+          )}
         </>
       ))}
     </ul>
