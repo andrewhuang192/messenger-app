@@ -10,7 +10,9 @@ module.exports = {
 
 async function index(req, res) {
   const messages = await Message.find({});
+
   messages.sort((a, b) => a.timestamp > b.timestamp);
+  
   res.json(messages);
 }
 

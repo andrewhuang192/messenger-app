@@ -25,6 +25,7 @@ app.use(require('./config/checkToken'));
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/messages', ensureLoggedIn, require('./routes/api/messages'))
+app.use('/api/conversations', ensureLoggedIn, require('./routes/api/conversations'))
 
 
 // The following "catch all" route (note the *) is necessary

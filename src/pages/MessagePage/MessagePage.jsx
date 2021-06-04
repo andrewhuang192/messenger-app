@@ -24,7 +24,7 @@ export default function MessagePage({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      height: "50vh",
+      height: "90%",
       backgroundColor: "#263238",
       borderColor: "white",
     },
@@ -165,6 +165,8 @@ export default function MessagePage({
         {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
         <h4>Conversations</h4>
         <ConversationList
+          user={user}
+          users={users}
           conversations={conversationsRef.current}
           activeConversation={activeConversation}
           setActiveConversation={setActiveConversation}

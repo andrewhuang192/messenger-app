@@ -4,25 +4,10 @@ const BASE_URL = "/api/conversations";
 
 export function getAllConversations() {
   return sendRequest(
-
     BASE_URL 
   );
 }
 
-
-
-// export function create(newMessage) {
-//   return sendRequest(BASE_URL, "POST", newMessage);
-
-// }
-
-// export function deleteOne(id) {
-// 	return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
-// }
-
-// export function update(messageToUpdate) {
-//   return sendRequest(`${BASE_URL}/${messageToUpdate._id}`, 'PUT', messageToUpdate)
-// }
 
 /*--- Helper Functions ---*/
 async function sendRequest(url, method = "GET", payload = null) {
@@ -41,7 +26,7 @@ async function sendRequest(url, method = "GET", payload = null) {
     // Prefacing with 'Bearer' is recommended for HTTP specificaion
     options.headers.Authorization = `Bearer ${token}`;
   }
-  console.log(options)
+  // console.log(options)
   const res = await fetch(url, options)
   // res.ok will be false if the status code is set to 4xx in the controller aciton
   if (res.ok) return res.json();

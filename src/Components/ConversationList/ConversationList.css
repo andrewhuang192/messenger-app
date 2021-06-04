@@ -10,6 +10,7 @@
     text-align: center;
     border-radius: .5vmin;
     margin-bottom: .5vmin;
+    width: 25em;
   }
       
   .ConversationList li:hover:not(.active) {
@@ -22,4 +23,5 @@
     color: var(--text-dark);
     background-color: var(--tan-1);
     border: .1vmin solid var(--tan-3);
+    
   }
