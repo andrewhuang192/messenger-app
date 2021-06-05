@@ -80,8 +80,7 @@ export default function ConversationList({
                 {users.map((user) => (
                   <>{user._id === conversation.user2 ? user.name : ""}</>
                 ))}
-                <a onClick={handleShowMessage}>
-                &nbsp;&nbsp;
+                <a onClick={() => setShowMessage(!showMessage)}>
                 &nbsp;&nbsp;
                   <span class="glyphicon glyphicon-pencil"></span>
                 </a>

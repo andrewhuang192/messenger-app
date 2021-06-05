@@ -1,17 +1,19 @@
-import "./ConversationBox.css";
+import "./MessageBox.css";
 // import MessageItem from '../MessageItem/MessageItem';
 import React, { useRef, useState } from "react";
-// import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { TextField, Button, makeStyles } from "@material-ui/core";
 // import { getUsers } from '../../utilities/users-service';
 // import * as messagesAPI from "../../utilities/messages-api";
 // import useChatRoom from "../../useChatRoom.js";
 import clsx from "clsx";
 import EditMessageForm from "../EditMessageForm/EditMessageForm";
+import EditMessagePage from "../../pages/EditMessagePage/EditMessagePage";
 
-export default function ConversationBox({
+export default function MessageBox({
   messageItems,
   messages,
+  setMessageItems,
   activeConversation,
   handleDeleteMessage,
   handleUpdateMessage,
@@ -49,18 +51,18 @@ export default function ConversationBox({
   const [showMessage, setShowMessage] = useState(false);
   const handleCloseMessage = () => setShowMessage(false);
   const handleShowMessage = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setShowMessage(true);
   };
   const [showLikes, setShowLikes] = useState(false);
   const handleCloseLikes = () => setShowLikes(false);
   const handleShowLikes = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setShowLikes(true);
   };
 
   return (
-    <main className="ConversationBox">
+    <main className="MessageBox">
       {messageItems
         .filter((message) => message.conversation === activeConversation)
         .map((message, i) => (
@@ -75,7 +77,7 @@ export default function ConversationBox({
               {message.message}
               <Button
                 variant="light"
-                onClick={() => setShowLikes(!showLikes)}
+                onClick={handleShowLikes}
                 value={message.id}
               >
                 <svg
@@ -117,20 +119,22 @@ export default function ConversationBox({
                   >
                     DELETE
                   </Button>
-                  <Button
+                  
+                  <Link
+                    to={{
+                      pathname: '/edit',
+                      state: { message },
+                    }}
                     className="btn btn-s btn-warning"
-                    onClick={() => setShowMessage(!showMessage)}
+                    // onClick={handleShowMessage}
                   >
                     EDIT
-                  </Button>
-                  {showMessage ? (
-                    <form showMessage={showMessage}>
-                      <TextField>{message.message}</TextField>
-                      <Button onClick={handleCloseMessage}>Update</Button>
-                    </form>
+                  </Link>
+                  {/* {showMessage ? (
+                  <EditMessagePage message={message} message_id={message._id} handleUpdateMessage={handleUpdateMessage} setMessageItems={setMessageItems} />
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </>
               ) : (
                 ""
@@ -151,7 +155,7 @@ export default function ConversationBox({
           {message.message}
               <Button
                 variant="light"
-                onClick={() => setShowLikes(!showLikes)}
+                onClick={handleShowLikes}
                 value={message.id}
               >
                 <svg
@@ -195,7 +199,7 @@ export default function ConversationBox({
                   </Button>
                   <Button
                     className="btn btn-s btn-warning"
-                    onClick={() => setShowMessage(!showMessage)}
+                    onClick={handleShowMessage}
                   >
                     EDIT
                   </Button>

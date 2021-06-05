@@ -64,13 +64,7 @@ export default function EditUserPage({ user, users, handleUpdatedUser }){
         </div>
         <div className="form-group">
           <label>Created Date</label>
-          <div
-            className="form-control"
-            name="date"
-            value={ formData.createdAt }
-            onChange={ handleChange }
-          />
-          {user.createdAt}
+           <strong>{new Date(user.createdAt).toLocaleDateString()}</strong>
         </div>
         <button
           type="submit"
